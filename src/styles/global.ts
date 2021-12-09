@@ -62,6 +62,10 @@ export const GlobalStyle = createGlobalStyle`
     background: none;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   img {
     max-width: 100%;
   }

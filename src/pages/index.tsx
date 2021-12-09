@@ -1,9 +1,50 @@
 import type { NextPage } from 'next';
 import { FiArrowRight } from 'react-icons/fi';
+import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import { Header } from '../components/Header';
 import { Container } from '../styles';
+import { Title } from '../styles/Title';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Footer } from '../components/Footer';
 
 const Home: NextPage = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: false,
+  };
+
+  const settings2 = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: false,
+  };
+
+  const settings3 = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: false,
+  };
+
   return (
     <Container>
       <Header />
@@ -21,7 +62,236 @@ const Home: NextPage = () => {
             </a>
           </div>
         </div>
+
+        <div className='about'>
+          <img src='/trator.png' alt='' />
+
+          <div className='text'>
+            <Title>
+              excelência em equipamentos <span> pesados</span>!
+            </Title>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              vel sollicitudin tortor, sit amet facilisis tortor. Cras rhoncus
+              feugiat lorem ut semper. Nulla mi augue, finibus nec aliquet non,
+              sollicitudin gravida dui. Aliquam volutpat felis sit amet nisi
+              ultrices, vitae porta dui rhoncus.
+            </p>
+            <p>
+              Sed mauris mi, commodo non massa vel, molestie porta elit. Vivamus
+              auctor tincidunt ipsum nec eleifend. Quisque urna lectus,
+              malesuada non urna quis, tempor pulvinar orci. Morbi auctor dolor
+              in aliquam commodo.
+            </p>
+          </div>
+        </div>
+
+        <div className='destaques'>
+          <Title>MÁQUINAS EM DESTAQUE</Title>
+          <Slider {...settings}>
+            <div className='card'>
+              <img src='/maq1.png' alt='' />
+              <div className='infos'>
+                <h3>CDM 512D</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
+                  Combinados (CIL / PNEUS)
+                </p>
+                <p>
+                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
+                  CDM512D
+                </p>
+                <p>
+                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
+                  Fabricação: 2012
+                </p>
+                <p>
+                  <FaTachometerAlt color='var(--principal-darkness-2)' />
+                  Horimetro: 0
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/maq2.png' alt='' />
+              <div className='infos'>
+                <h3>CDM 512D</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
+                  Combinados (CIL / PNEUS)
+                </p>
+                <p>
+                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
+                  CDM512D
+                </p>
+                <p>
+                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
+                  Fabricação: 2012
+                </p>
+                <p>
+                  <FaTachometerAlt color='var(--principal-darkness-2)' />
+                  Horimetro: 0
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/maq3.png' alt='' />
+              <div className='infos'>
+                <h3>CDM 512D</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
+                  Combinados (CIL / PNEUS)
+                </p>
+                <p>
+                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
+                  CDM512D
+                </p>
+                <p>
+                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
+                  Fabricação: 2012
+                </p>
+                <p>
+                  <FaTachometerAlt color='var(--principal-darkness-2)' />
+                  Horimetro: 0
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/maq1.png' alt='' />
+              <div className='infos'>
+                <h3>CDM 512D</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
+                  Combinados (CIL / PNEUS)
+                </p>
+                <p>
+                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
+                  CDM512D
+                </p>
+                <p>
+                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
+                  Fabricação: 2012
+                </p>
+                <p>
+                  <FaTachometerAlt color='var(--principal-darkness-2)' />
+                  Horimetro: 0
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+          </Slider>
+        </div>
+
+        <div className='partnersLine'>
+          <Slider {...settings2}>
+            <a href=''>
+              <img src='/logos/case.png' alt='Logo Case' />
+            </a>
+            <a href=''>
+              <img src='/logos/komatisu.png' alt='Logo Komatisu' />
+            </a>
+            <a href=''>
+              <img src='/logos/john-deere.png' alt='Logo Komatisu' />
+            </a>
+            <a href=''>
+              <img src='/logos/jcb.png' alt='Logo Komatisu' />
+            </a>
+            <a href=''>
+              <img src='/logos/case.png' alt='Logo Case' />
+            </a>
+            <a href=''>
+              <img src='/logos/komatisu.png' alt='Logo Komatisu' />
+            </a>
+            <a href=''>
+              <img src='/logos/john-deere.png' alt='Logo Komatisu' />
+            </a>
+          </Slider>
+        </div>
+
+        <div className='destaquesPieces'>
+          <Title>Peças EM DESTAQUE</Title>
+          <Slider {...settings3}>
+            <div className='card'>
+              <img src='/pec1.png' alt='' />
+              <div className='infos'>
+                <h3>Coroa e Cubo 70ci</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/pec2.png' alt='' />
+              <div className='infos'>
+                <h3>DRUM D4E</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/pec3.png' alt='' />
+              <div className='infos'>
+                <h3>Ponta de eixo D8K</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/pec1.png' alt='' />
+              <div className='infos'>
+                <h3>Coroa e Cubo 70ci</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/pec2.png' alt='' />
+              <div className='infos'>
+                <h3>DRUM D4E</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+            <div className='card'>
+              <img src='/pec3.png' alt='' />
+              <div className='infos'>
+                <h3>Ponta de eixo D8K</h3>
+                <p>
+                  <FaTag color='var(--principal-darkness-2)' size={20} />
+                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
+                </p>
+                <a href='#'>Ver Mais</a>
+              </div>
+            </div>
+          </Slider>
+        </div>
+
+        <iframe
+          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3738.7985937852227!2d-54.5951157850774!3d-20.43236778632444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e8669d75fd37%3A0x9dc163c9b0aa0562!2sAv.%20Cel.%20Antonino%2C%205153%20-%20Cel.%20Antonino%2C%20Campo%20Grande%20-%20MS%2C%2079013-000!5e0!3m2!1spt-BR!2sbr!4v1639076279172!5m2!1spt-BR!2sbr'
+          width='600'
+          height='450'
+          allowFullScreen
+          loading='lazy'
+        ></iframe>
       </main>
+
+      <Footer />
     </Container>
   );
 };

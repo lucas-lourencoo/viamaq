@@ -68,11 +68,13 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <FiSearch
-                size={22}
-                strokeWidth={4}
-                color='var(--principal-darkness-1)'
-              />
+              <button>
+                <FiSearch
+                  size={22}
+                  strokeWidth={4}
+                  color='var(--principal-darkness-1)'
+                />
+              </button>
             </li>
           </ul>
         </nav>

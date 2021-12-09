@@ -12,7 +12,7 @@ export const Container = styled.header`
       justify-content: space-between;
       margin: 0 auto;
       max-width: 1200px;
-      padding: 1rem 0;
+      padding: 0.5rem 0;
 
       svg {
         color: var(--principal-lighter-1);
@@ -63,6 +63,19 @@ export const Container = styled.header`
     justify-content: space-between;
     padding: 1rem 0;
 
+    @keyframes appearTop {
+      from {
+        opacity: 0;
+        transform: translateY(-0.4rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    animation: appearTop 0.8s forwards;
+
     img {
       min-width: 14rem;
     }
@@ -85,6 +98,11 @@ export const Container = styled.header`
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            transition: 0.2s;
+
+            :hover {
+              filter: brightness(90%);
+            }
 
             svg {
               margin-left: 0.25rem;
