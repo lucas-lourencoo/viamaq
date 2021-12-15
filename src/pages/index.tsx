@@ -48,7 +48,9 @@ const Home: NextPage = () => {
 
   return (
     <Container>
-      <Head>Viamaq - Tratores e Peças | Início</Head>
+      <Head>
+        <title>Viamaq - Tratores e Peças | Início</title>
+      </Head>
 
       <Header />
       <main>

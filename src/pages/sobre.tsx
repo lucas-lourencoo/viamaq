@@ -9,7 +9,9 @@ import { NextPage } from 'next';
 const About: NextPage = () => {
   return (
     <Container>
-      <Head>Viamaq - Tratores e Peças | Sobre</Head>
+      <Head>
+        <title>Viamaq - Tratores e Peças | Sobre</title>
+      </Head>
 
       <Header />
       <Paginator text={'Sobre'} />

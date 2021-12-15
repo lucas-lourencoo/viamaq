@@ -10,7 +10,9 @@ import { NextPage } from 'next';
 const Contato: NextPage = () => {
   return (
     <Container>
-      <Head>Viamaq - Tratores e Peças | Contato</Head>
+      <Head>
+        <title>Viamaq - Tratores e Peças | Contato</title>
+      </Head>
 
       <Header />
       <Paginator text='Contato' />
