@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import Head from 'next/head';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import { Header } from '../components/Header';
@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Footer } from '../components/Footer';
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   const settings = {
@@ -47,6 +48,8 @@ const Home: NextPage = () => {
 
   return (
     <Container>
+      <Head>Viamaq - Tratores e Peças | Início</Head>
+
       <Header />
       <main>
         <div className='banner'>

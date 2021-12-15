@@ -1,12 +1,16 @@
+import Head from 'next/head';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
 import { Container } from '../styles/pages/about';
 import { Title } from '../styles/Title';
+import { NextPage } from 'next';
 
-const About = () => {
+const About: NextPage = () => {
   return (
     <Container>
+      <Head>Viamaq - Tratores e Peças | Sobre</Head>
+
       <Header />
       <Paginator text={'Sobre'} />
 

@@ -1,13 +1,17 @@
+import Head from 'next/head';
 import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
 import { Container } from '../styles/pages/contact';
 import { Title } from '../styles/Title';
+import { NextPage } from 'next';
 
-const Contato = () => {
+const Contato: NextPage = () => {
   return (
     <Container>
+      <Head>Viamaq - Tratores e Peças | Contato</Head>
+
       <Header />
       <Paginator text='Contato' />
 
