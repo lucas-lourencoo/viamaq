@@ -17,14 +17,20 @@ export function Header() {
               <FiMail size={22} /> email@email.org
             </p>
             <p>
-              <FaWhatsapp size={22} /> (67) 99816-1571
+              <FaWhatsapp size={22} /> (67) 998161-1571
             </p>
           </div>
           <div className='social'>
-            <a href=''>
+            <a
+              href='https://www.facebook.com/viamaqtratoresepecas'
+              target='__blank'
+            >
               <FaFacebookSquare size={26} />
             </a>
-            <a href=''>
+            <a
+              href='https://www.instagram.com/viamaqtratores/'
+              target='__blank'
+            >
               <FaInstagram size={26} />
             </a>
           </div>

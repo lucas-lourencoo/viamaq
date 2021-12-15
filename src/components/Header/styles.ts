@@ -101,7 +101,7 @@ export const Container = styled.header`
             transition: 0.2s;
 
             :hover {
-              filter: brightness(90%);
+              font-weight: 700;
             }
 
             svg {

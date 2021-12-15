@@ -70,8 +70,8 @@ export function Footer() {
                 @viamaq
               </li>
               <li>
-                <FaHome size={50} /> Av. Coronel Antonino, 5153 Campo Grande/MS
-                - 79100-000
+                <FaHome size={70} /> Av coronel Antonino, 5.857 - Jardim
+                Montevidéu. CEP: 79035-000
               </li>
             </ul>
           </div>

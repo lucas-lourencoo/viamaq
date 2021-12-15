@@ -16,7 +16,7 @@ export const Container = styled.footer`
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       padding: 5rem 0;
-      gap: 5rem;
+      gap: 3rem;
 
       svg {
         color: var(--principal-lighter-2);
@@ -42,7 +42,8 @@ export const Container = styled.footer`
 
       .social {
         ul li {
-          font-size: 0.8rem;
+          font-size: 1.125rem;
+          margin-left: 0;
         }
       }
 
@@ -59,5 +60,8 @@ export const Container = styled.footer`
 
   p.copy {
     background: #1a3696;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 14px;
   }
 `;
