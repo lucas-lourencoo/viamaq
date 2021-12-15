@@ -174,6 +174,11 @@ export const Container = styled.div`
           padding: 0.875rem 2rem;
           display: inline-block;
           border-radius: 5px;
+          transition: 0.3s;
+
+          :hover {
+            filter: brightness(90%);
+          }
         }
       }
     }
@@ -255,6 +260,11 @@ export const Container = styled.div`
           display: inline-block;
           border-radius: 5px;
           margin-top: 1rem;
+          transition: 0.3s;
+
+          :hover {
+            filter: brightness(90%);
+          }
         }
       }
     }

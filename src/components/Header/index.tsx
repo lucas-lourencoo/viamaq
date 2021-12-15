@@ -3,10 +3,25 @@ import Link from 'next/link';
 import { Container } from './styles';
 import { FiMail, FiPhone, FiPlus, FiSearch } from 'react-icons/fi';
 import { FaFacebookSquare, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 export function Header() {
+  const [isActive, setActive] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!isActive && window.pageYOffset > 3) {
+        setActive(true);
+      } else if (isActive && window.pageYOffset <= 3) {
+        setActive(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+  });
+
   return (
-    <Container>
+    <Container isActive={isActive}>
       <div className='blueTop'>
         <div className='container'>
           <div className='contact'>
@@ -51,12 +66,22 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link href=''>
-                <a>
-                  Venda
-                  <FiPlus size={14} strokeWidth={3} color='var(--principal)' />
-                </a>
-              </Link>
+              <a>
+                Venda
+                <FiPlus size={14} strokeWidth={3} color='var(--principal)' />
+              </a>
+              <ul className='subMenu'>
+                <li>
+                  <Link href=''>
+                    <a>Máquinas</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href=''>
+                    <a>Peças</a>
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link href=''>
@@ -69,7 +94,7 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link href=''>
+              <Link href='/contato'>
                 <a>Contato</a>
               </Link>
             </li>

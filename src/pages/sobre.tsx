@@ -4,7 +4,7 @@ import { Paginator } from '../components/Paginator';
 import { Container } from '../styles/pages/about';
 import { Title } from '../styles/Title';
 
-export default function About() {
+const About = () => {
   return (
     <Container>
       <Header />
@@ -38,4 +38,6 @@ export default function About() {
       <Footer />
     </Container>
   );
-}
+};
+
+export default About;

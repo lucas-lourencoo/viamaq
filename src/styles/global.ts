@@ -60,6 +60,7 @@ export const GlobalStyle = createGlobalStyle`
   button, input, select, textarea {
     border: 0;
     background: none;
+    font-family: 'Asap', sans-serif;
   }
 
   button {
