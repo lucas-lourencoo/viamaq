@@ -63,15 +63,30 @@ export function Footer() {
             <h4>Fique informado</h4>
             <ul>
               <li>
-                <FaFacebookSquare size={30} /> /viamaq.com.br
+                <a
+                  href='https://www.facebook.com/viamaqtratoresepecas'
+                  target='__blank'
+                >
+                  <FaFacebookSquare size={24} /> /viamaq.com.br
+                </a>
               </li>
               <li>
-                <FaInstagram size={30} />
-                @viamaq
+                <a
+                  href='https://www.instagram.com/viamaqtratores/'
+                  target='__blank'
+                >
+                  <FaInstagram size={24} />
+                  @viamaq
+                </a>
               </li>
               <li>
-                <FaHome size={70} /> Av coronel Antonino, 5.857 - Jardim
-                Montevidéu. CEP: 79035-000
+                <a
+                  href='https://goo.gl/maps/rJYCeE5McY11QwtJ6'
+                  target='__blank'
+                >
+                  <FaHome size={24} /> Av coronel Antonino, 5857 - Jardim
+                  Montevidéu. CEP: 79035-000
+                </a>
               </li>
             </ul>
           </div>

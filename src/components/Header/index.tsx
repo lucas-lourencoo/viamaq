@@ -37,16 +37,16 @@ export function Header() {
         </div>
       </div>
       <div className='menu'>
-        <Image src='/logo.svg' alt='Logo Viamaq' width={168} height={49} />
+        <img src='/logo.svg' alt='Logo Viamaq' />
         <nav>
           <ul>
             <li>
-              <Link href=''>
+              <Link href='/'>
                 <a>Início</a>
               </Link>
             </li>
             <li>
-              <Link href=''>
+              <Link href='/sobre'>
                 <a>Sobre</a>
               </Link>
             </li>

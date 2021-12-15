@@ -41,9 +41,22 @@ export const Container = styled.footer`
       }
 
       .social {
-        ul li {
+        ul li a {
+          display: flex;
+          align-items: center;
           font-size: 1.125rem;
-          margin-left: 0;
+          transition: 0.3s;
+          position: relative;
+          padding-left: 1.25rem;
+
+          :hover {
+            color: var(--principal-lighter-2);
+          }
+
+          svg {
+            position: absolute;
+            left: -1rem;
+          }
         }
       }
 

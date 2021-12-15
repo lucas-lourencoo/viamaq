@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   width: 100%;
+  background: var(--white);
 
   .blueTop {
     background: var(--blue);
@@ -50,6 +51,10 @@ export const Container = styled.header`
         a + a {
           margin-left: 1.5rem;
         }
+
+        a svg:hover {
+          filter: brightness(110%);
+        }
       }
     }
   }
@@ -77,7 +82,7 @@ export const Container = styled.header`
     animation: appearTop 0.8s forwards;
 
     img {
-      min-width: 14rem;
+      min-width: 15rem;
     }
 
     nav {

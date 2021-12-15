@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import { Header } from '../components/Header';
-import { Container } from '../styles';
+import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
