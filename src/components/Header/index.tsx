@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from './styles';
 import { FiMail, FiPhone, FiPlus, FiSearch } from 'react-icons/fi';
@@ -52,7 +51,11 @@ export function Header() {
         </div>
       </div>
       <div className='menu'>
-        <img src='/logo.svg' alt='Logo Viamaq' />
+        <Link href='/'>
+          <a>
+            <img src='/logo.svg' alt='Logo Viamaq' />
+          </a>
+        </Link>
         <nav>
           <ul>
             <li>
@@ -72,19 +75,19 @@ export function Header() {
               </a>
               <ul className='subMenu'>
                 <li>
-                  <Link href=''>
+                  <Link href='/vendas/catalogo'>
                     <a>Máquinas</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href=''>
+                  <Link href='/vendas/catalogo'>
                     <a>Peças</a>
                   </Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link href=''>
+              <Link href='/series'>
                 <a>Série de máquinas</a>
               </Link>
             </li>

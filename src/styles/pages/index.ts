@@ -8,7 +8,7 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    min-height: 80vh;
+    min-height: 81vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -32,7 +32,7 @@ export const Container = styled.div`
 
       @keyframes rightIcon {
         from {
-          transform: translateX(0.25rem);
+          transform: translateX(0.5rem);
         }
         to {
           transform: translateX(0);
@@ -88,7 +88,7 @@ export const Container = styled.div`
 
         svg {
           margin-left: 1rem;
-          animation: rightIcon 1s forwards infinite alternate;
+          animation: rightIcon 0.5s forwards infinite alternate;
         }
       }
     }

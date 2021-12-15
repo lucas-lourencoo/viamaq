@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Footer } from '../components/Footer';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   const settings = {
@@ -62,9 +63,11 @@ const Home: NextPage = () => {
               Todos com <span>qualidade</span> e <span>garantia</span>!
             </h2>
 
-            <a href=''>
-              Conferir catálogo <FiArrowRight strokeWidth={3} size={30} />
-            </a>
+            <Link href='/vendas/catalogo'>
+              <a>
+                Conferir catálogo <FiArrowRight strokeWidth={3} size={30} />
+              </a>
+            </Link>
           </div>
         </div>
 
@@ -198,19 +201,28 @@ const Home: NextPage = () => {
               <img src='/logos/komatisu.png' alt='Logo Komatisu' />
             </a>
             <a href=''>
-              <img src='/logos/john-deere.png' alt='Logo Komatisu' />
+              <img src='/logos/john-deere.png' alt='Logo John Deere' />
             </a>
             <a href=''>
-              <img src='/logos/jcb.png' alt='Logo Komatisu' />
+              <img src='/logos/jcb.png' alt='Logo JCB' />
             </a>
             <a href=''>
-              <img src='/logos/case.png' alt='Logo Case' />
+              <img src='/logos/cat.png' alt='Logo Caterpillar' />
             </a>
             <a href=''>
-              <img src='/logos/komatisu.png' alt='Logo Komatisu' />
+              <img src='/logos/clark.png' alt='Logo Clark' />
             </a>
             <a href=''>
-              <img src='/logos/john-deere.png' alt='Logo Komatisu' />
+              <img src='/logos/hyster.png' alt='Logo Hyster' />
+            </a>
+            <a href=''>
+              <img src='/logos/volvo.png' alt='Logo Volvo' />
+            </a>
+            <a href=''>
+              <img src='/logos/michigan.png' alt='Logo Michigan' />
+            </a>
+            <a href=''>
+              <img src='/logos/fiatallis.png' alt='Logo fiatallis' />
             </a>
           </Slider>
         </div>

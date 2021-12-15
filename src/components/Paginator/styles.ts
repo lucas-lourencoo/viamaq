@@ -27,6 +27,6 @@ export const Pagination = styled.section`
   }
 
   span + span {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 `;
