@@ -91,7 +91,7 @@ export const Container = styled.header<ContainerProps>`
     animation: appearTop 0.8s forwards;
 
     img {
-      min-width: 15rem;
+      max-width: 14rem;
     }
 
     nav {
