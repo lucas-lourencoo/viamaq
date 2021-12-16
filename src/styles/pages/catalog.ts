@@ -14,8 +14,23 @@ export const Container = styled.main`
     margin: 5rem auto;
 
     .filter {
+      @keyframes fromLeft {
+        from {
+          transform: translateX(-1rem);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fromRight {
+        from {
+          transform: translateX(1rem);
+          opacity: 0;
+        }
+      }
+
       background: #fafaf5;
       border: 1px solid #e3aa00;
+      animation: fromLeft 0.8s forwards;
 
       h2 {
         text-align: center;
@@ -95,6 +110,7 @@ export const Container = styled.main`
       grid-template-columns: repeat(3, 1fr);
       width: 100%;
       gap: 1.5rem;
+      animation: fromRight 1s forwards;
 
       .item {
         width: 100%;
