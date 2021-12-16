@@ -41,6 +41,15 @@ export const GlobalStyle = createGlobalStyle`
     --black-5: #2D2D2B;
   }
 
+  html {
+    @media(max-width: 1000px){
+      font-size: 93.75%;
+    }
+    @media(max-width: 720px){
+      font-size: 87.5%;
+    }
+  }
+
   body {
     font-family: 'Asap', sans-serif;
     text-rendering: optimizeLegibility;
