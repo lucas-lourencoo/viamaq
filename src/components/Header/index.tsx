@@ -92,7 +92,7 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link href=''>
+              <Link href='/buscar'>
                 <a>Buscar máquinas</a>
               </Link>
             </li>

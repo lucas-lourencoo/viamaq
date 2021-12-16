@@ -63,6 +63,7 @@ export const Container = styled.footer`
       .infos {
         img {
           margin-bottom: 1rem;
+          max-width: 80%;
         }
         p {
           font-size: 1.125rem;
