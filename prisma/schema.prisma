@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id   String @id @default(uuid())
+  name String
+
+  Machine Machine[]
+  @@map("categories")
+}
+
+model Machine {
+  id          String @id @default(uuid())
+  model       String
+  year        Int
+  hourmeter   String
+  image       String
+  value       String
+  category_id String
+
+  Category Category @relation(fields: [category_id], references: [id])
+  @@map("machines")
+}
