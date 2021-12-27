@@ -33,15 +33,20 @@ export const Container = styled.header<ContainerProps>`
         align-items: center;
         justify-content: center;
 
-        p {
+        a {
           display: flex;
           align-items: center;
           justify-content: center;
           color: var(--white);
           font-size: 1.125rem;
           padding-right: 1.5rem;
+          transition: 0.2s;
 
-          & + p {
+          :hover {
+            color: var(--principal-lighter-2);
+          }
+
+          & + a {
             border-left: 1px solid var(--white);
             padding: 0 1.5rem;
           }

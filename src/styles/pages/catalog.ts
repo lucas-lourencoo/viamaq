@@ -118,6 +118,13 @@ export const Container = styled.main`
         box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         overflow: hidden;
+        transition: 0.3s;
+        cursor: pointer;
+
+        :hover {
+          transform: scale(1.025);
+          background: #f2f2f2;
+        }
 
         img {
           width: 100%;

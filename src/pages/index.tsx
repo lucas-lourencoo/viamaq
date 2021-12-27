@@ -1,15 +1,15 @@
+import type { NextPage } from 'next';
+import Link from 'next/link';
 import Head from 'next/head';
-import { FiArrowRight } from 'react-icons/fi';
-import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import { Header } from '../components/Header';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
+import { Footer } from '../components/Footer';
 import Slider from 'react-slick';
+import { FiArrowRight } from 'react-icons/fi';
+import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Footer } from '../components/Footer';
-import type { NextPage } from 'next';
-import Link from 'next/link';
 
 const Home: NextPage = () => {
   const settings = {

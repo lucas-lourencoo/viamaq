@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { useState } from 'react';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -14,6 +15,9 @@ const Catalog: NextPage = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Viamaq - Tratores e Peças | Catálogo</title>
+      </Head>
       <Header />
       <Paginator text='Venda | Catálogo' />
 

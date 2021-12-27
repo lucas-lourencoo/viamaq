@@ -19,14 +19,27 @@ model Category {
 }
 
 model Machine {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   model       String
   year        Int
   hourmeter   String
   image       String
   value       String
+  brand       String
+  description String?
   category_id String
 
   Category Category @relation(fields: [category_id], references: [id])
   @@map("machines")
+}
+
+model Piece {
+  id            String  @id @default(uuid())
+  brand         String
+  description   String?
+  image         String
+  value         String
+  machine_model String
+
+  @@map("pieces")
 }

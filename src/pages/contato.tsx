@@ -1,11 +1,11 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
-import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
 import { Container } from '../styles/pages/contact';
 import { Title } from '../styles/Title';
-import { NextPage } from 'next';
+import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 
 const Contato: NextPage = () => {
   return (

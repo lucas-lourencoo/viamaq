@@ -40,11 +40,38 @@ export default class MyDocument extends Document {
         <Head>
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <meta name='title' content='ViaMaq Tratores' />
+          <meta
+            name='description'
+            content='Empresa especializada na comercialização de máquinas pesadas, novas e usadas, peças e serviços.'
+          />
+          <meta property='og:type' content='website' />
+          <meta
+            property='og:url'
+            content='https://www.viamaqtratores.com.br/'
+          />
+          <meta property='og:title' content='ViaMaq Tratores' />
+          <meta
+            property='og:description'
+            content='Empresa especializada na comercialização de máquinas pesadas, novas e usadas, peças e serviços.'
+          />
+          <meta property='og:image' content='/logo.svg' />
+          <meta property='twitter:card' content='summary_large_image' />
+          <meta
+            property='twitter:url'
+            content='https://www.viamaqtratores.com.br/'
+          />
+          <meta property='twitter:title' content='ViaMaq Tratores' />
+          <meta
+            property='twitter:description'
+            content='Empresa especializada na comercialização de máquinas pesadas, novas e usadas, peças e serviços.'
+          />
+          <meta property='twitter:image' content='/logo.svg'></meta>
           <link
             href='https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap'
             rel='stylesheet'
           />
-          <link rel='shortcut icon' href='favicon.svg' type='image/x-icon' />
+          <link rel='shortcut icon' href='/favicon.svg' type='image/x-icon' />
         </Head>
         <body>
           <Main />

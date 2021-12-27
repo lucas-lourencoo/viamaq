@@ -24,15 +24,15 @@ export function Header() {
       <div className='blueTop'>
         <div className='container'>
           <div className='contact'>
-            <p>
+            <a href='#'>
               <FiPhone size={22} /> (67) 9 9999-9999
-            </p>
-            <p>
+            </a>
+            <a href='#'>
               <FiMail size={22} /> email@email.org
-            </p>
-            <p>
+            </a>
+            <a href='#'>
               <FaWhatsapp size={22} /> (67) 998161-1571
-            </p>
+            </a>
           </div>
           <div className='social'>
             <a
