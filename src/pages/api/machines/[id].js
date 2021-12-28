@@ -9,6 +9,8 @@ export default async function (req, res) {
       });
       return res.json(result);
     }
+
+    return res.status(405).json({ message: 'Method Not Allowed' });
   } catch (err) {
     res.json({ message: 'Erro desconhecido', code: err.message });
   }

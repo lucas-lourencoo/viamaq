@@ -35,6 +35,7 @@ model Machine {
 
 model Piece {
   id            String  @id @default(uuid())
+  name          String
   brand         String
   description   String?
   image         String

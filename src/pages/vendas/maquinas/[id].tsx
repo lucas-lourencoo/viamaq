@@ -35,7 +35,7 @@ const Machine = ({ machine }: MachineProps) => {
   };
 
   return (
-    <Container>
+    <Container image={machine.image}>
       <Head>
         <title>Viamaq - Tratores e Peças | ${machine.model}</title>
       </Head>
@@ -44,7 +44,7 @@ const Machine = ({ machine }: MachineProps) => {
 
       <main>
         <section className='machineGrid'>
-          <img src={machine.image} alt={machine.model} />
+          <figure className='image'></figure>
 
           <section className='info'>
             <h1>

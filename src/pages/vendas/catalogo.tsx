@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Paginator } from '../../components/Paginator';
@@ -8,6 +9,19 @@ import { Container } from '../../styles/pages/catalog';
 
 const Catalog: NextPage = () => {
   const [year, setYear] = useState(1990);
+  const [machines, setMachines] = useState([]);
+  const [pieces, setPieces] = useState([]);
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:3000/api',
+  });
+
+  useEffect(() => {
+    instance.get('/catalog').then((res) => {
+      setMachines(res.data.machines);
+      setPieces(res.data.pieces);
+    });
+  }, []);
 
   const handleYearRange = (event: any) => {
     setYear(event.target.value);
@@ -128,42 +142,22 @@ const Catalog: NextPage = () => {
           </form>
         </section>
         <section className='grid'>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
-          <div className='item'>
-            <img src='/pec1.png' alt='' />
-            <h2>Coroa e Cubo 70ci</h2>
-          </div>
+          {machines.map((machine: MachineInterface) => (
+            <div className='item' key={machine.id}>
+              <img src={machine.image} alt='' />
+              <h2>{machine.model}</h2>
+            </div>
+          ))}
+          {pieces.map((piece: PieceInterface) => (
+            <div className='item' key={piece.id}>
+              <figure>
+                <img src={piece.image} alt='' />
+              </figure>
+              <h2>
+                {piece.name} - {piece.machine_model}
+              </h2>
+            </div>
+          ))}
         </section>
       </main>
       <Footer />

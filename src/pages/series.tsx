@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
@@ -20,36 +21,56 @@ const Series: NextPage = () => {
         <Title>Selecione a série abaixo para ver mais...</Title>
 
         <div className='seriesGrid'>
-          <a className='item' href='#'>
-            <img src='/logos/case.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/cat.png' alt='Logo Catterpilar' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/jcb.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/clark.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/fiatallis.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/hyster.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/john-deere.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/komatisu.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/michigan.png' alt='Logo Case' />
-          </a>
-          <a className='item' href='#'>
-            <img src='/logos/volvo.png' alt='Logo Case' />
-          </a>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/case.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/cat.png' alt='Logo Catterpilar' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/jcb.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/clark.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/fiatallis.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/hyster.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/john-deere.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/komatisu.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/michigan.png' alt='Logo Case' />
+            </a>
+          </Link>
+          <Link href='/vendas/catalogo' passHref>
+            <a className='item'>
+              <img src='/logos/volvo.png' alt='Logo Case' />
+            </a>
+          </Link>
         </div>
       </main>
       <Footer />

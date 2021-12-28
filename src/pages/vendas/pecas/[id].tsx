@@ -1,24 +1,30 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { FaCalendar, FaTachometerAlt, FaTag, FaTractor } from 'react-icons/fa';
+import {
+  FaCalendar,
+  FaCogs,
+  FaTachometerAlt,
+  FaTag,
+  FaTractor,
+} from 'react-icons/fa';
 import Slider from 'react-slick';
 import { Footer } from '../../../components/Footer';
 import { Header } from '../../../components/Header';
 import { Paginator } from '../../../components/Paginator';
-import { Container } from '../../../styles/pages/single';
 import { Title } from '../../../styles/Title';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
+import { Container } from '../../../styles/pages/single';
 
 interface PieceProps {
   piece: {
-    model: string;
-    year: number;
-    hourmeter: string;
+    id: string;
+    name: string;
+    brand: string;
+    description: string | null;
     image: string;
     value: string;
-    brand: string;
-    category_id: string;
+    machine_model: string;
   };
 }
 
@@ -35,20 +41,22 @@ const Piece = ({ piece }: PieceProps) => {
   };
 
   return (
-    <Container>
+    <Container image={piece.image}>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${piece.model}</title>
+        <title>Viamaq - Tratores e Peças | ${piece.name}</title>
       </Head>
       <Header />
-      <Paginator text={`Venda | Máquinas | ${piece.model}`} />
+      <Paginator
+        text={`Venda | Peças | ${piece.name} - ${piece.machine_model}`}
+      />
 
       <main>
-        <section className='pieceGrid'>
-          <img src={piece.image} alt={piece.model} />
+        <section className='machineGrid'>
+          <figure className='image'></figure>
 
           <section className='info'>
             <h1>
-              <FaTractor /> CDM 512D
+              <FaCogs /> {piece.name}
             </h1>
             <span>Categoria: Compactadores combinados</span>
             <hr />

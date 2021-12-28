@@ -12,6 +12,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       await prisma.category.create({ data });
       return res.json(data);
     }
+
+    return res.status(405).json({ message: 'Method Not Allowed' });
   } catch (err: any) {
     res.json({ message: 'Erro desconhecido', code: err.message });
   }

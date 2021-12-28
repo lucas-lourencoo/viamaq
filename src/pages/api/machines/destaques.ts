@@ -5,12 +5,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const prisma = new PrismaClient();
   try {
     if (req.method === 'GET') {
-      const result = await prisma.machine.findMany({});
+      const result = await prisma.machine.findMany({ take: 6 });
       return res.json(result);
-    } else if (req.method === 'POST') {
-      const data = req.body;
-      await prisma.machine.create({ data });
-      return res.json(data);
     }
 
     return res.status(405).json({ message: 'Method Not Allowed' });

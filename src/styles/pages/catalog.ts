@@ -128,6 +128,7 @@ export const Container = styled.main`
 
         img {
           width: 100%;
+          max-height: 10rem;
         }
 
         h2 {

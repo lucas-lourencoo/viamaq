@@ -136,8 +136,14 @@ export const Container = styled.div`
       border-radius: 7px;
       position: relative;
 
-      img {
+      figure {
         width: 100%;
+        overflow: hidden;
+        max-height: 14rem;
+
+        img {
+          width: 100%;
+        }
       }
 
       .infos {
@@ -220,8 +226,14 @@ export const Container = styled.div`
       border-radius: 7px;
       position: relative;
 
-      img {
+      figure {
         width: 100%;
+        overflow: hidden;
+        max-height: 14rem;
+
+        img {
+          width: 100%;
+        }
       }
 
       .infos {

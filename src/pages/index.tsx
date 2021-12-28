@@ -10,8 +10,17 @@ import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Home: NextPage = () => {
+  const [machines, setMachines] = useState([]);
+  const [pieces, setPieces] = useState([]);
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:3000/api',
+  });
+
   const settings = {
     dots: false,
     infinite: true,
@@ -46,6 +55,15 @@ const Home: NextPage = () => {
     autoplaySpeed: 4000,
     pauseOnHover: false,
   };
+
+  useEffect(() => {
+    instance.get('/machines/destaques').then((res) => {
+      setMachines(res.data);
+    });
+    instance.get('/pieces/destaques').then((res) => {
+      setPieces(res.data);
+    });
+  }, []);
 
   return (
     <Container>
@@ -97,98 +115,36 @@ const Home: NextPage = () => {
         <div className='destaques'>
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
-            <div className='card'>
-              <img src='/maq1.png' alt='' />
-              <div className='infos'>
-                <h3>CDM 512D</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
-                  Combinados (CIL / PNEUS)
-                </p>
-                <p>
-                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
-                  CDM512D
-                </p>
-                <p>
-                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                  Fabricação: 2012
-                </p>
-                <p>
-                  <FaTachometerAlt color='var(--principal-darkness-2)' />
-                  Horimetro: 0
-                </p>
-                <a href='#'>Ver Mais</a>
+            {machines.map((machine: MachineInterface, index) => (
+              <div className='card' key={index}>
+                <figure>
+                  <img src={machine.image} alt='' />
+                </figure>
+
+                <div className='infos'>
+                  <h3>{machine.model}</h3>
+                  <p>
+                    <FaTag color='var(--principal-darkness-2)' /> Compactadores
+                    Combinados (CIL / PNEUS)
+                  </p>
+                  <p>
+                    <FaTractor color='var(--principal-darkness-2)' />
+                    {machine.brand}
+                  </p>
+                  <p>
+                    <FaCalendar color='var(--principal-darkness-2)' /> Ano de
+                    Fabricação: {machine.year}
+                  </p>
+                  <p>
+                    <FaTachometerAlt color='var(--principal-darkness-2)' />
+                    Horimetro: {machine.hourmeter}
+                  </p>
+                  <Link href={`/vendas/maquinas/${machine.id}`} passHref>
+                    <a href=''>Ver Mais</a>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className='card'>
-              <img src='/maq2.png' alt='' />
-              <div className='infos'>
-                <h3>CDM 512D</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
-                  Combinados (CIL / PNEUS)
-                </p>
-                <p>
-                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
-                  CDM512D
-                </p>
-                <p>
-                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                  Fabricação: 2012
-                </p>
-                <p>
-                  <FaTachometerAlt color='var(--principal-darkness-2)' />
-                  Horimetro: 0
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/maq3.png' alt='' />
-              <div className='infos'>
-                <h3>CDM 512D</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
-                  Combinados (CIL / PNEUS)
-                </p>
-                <p>
-                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
-                  CDM512D
-                </p>
-                <p>
-                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                  Fabricação: 2012
-                </p>
-                <p>
-                  <FaTachometerAlt color='var(--principal-darkness-2)' />
-                  Horimetro: 0
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/maq1.png' alt='' />
-              <div className='infos'>
-                <h3>CDM 512D</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' /> Compactadores
-                  Combinados (CIL / PNEUS)
-                </p>
-                <p>
-                  <FaTractor color='var(--principal-darkness-2)' /> LONKING
-                  CDM512D
-                </p>
-                <p>
-                  <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                  Fabricação: 2012
-                </p>
-                <p>
-                  <FaTachometerAlt color='var(--principal-darkness-2)' />
-                  Horimetro: 0
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
+            ))}
           </Slider>
         </div>
 
@@ -230,72 +186,23 @@ const Home: NextPage = () => {
         <div className='destaquesPieces'>
           <Title>Peças EM DESTAQUE</Title>
           <Slider {...settings3}>
-            <div className='card'>
-              <img src='/pec1.png' alt='' />
-              <div className='infos'>
-                <h3>Coroa e Cubo 70ci</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
+            {pieces.map((piece: PieceInterface, index) => (
+              <div className='card' key={index}>
+                <figure>
+                  <img src={piece.image} alt={piece.name} />
+                </figure>
+                <div className='infos'>
+                  <h3>
+                    {piece.name} - {piece.machine_model}
+                  </h3>
+                  <p>
+                    <FaTag color='var(--principal-darkness-2)' size={20} />
+                    {piece.brand.toUpperCase()}
+                  </p>
+                  <a href='#'>Ver Mais</a>
+                </div>
               </div>
-            </div>
-            <div className='card'>
-              <img src='/pec2.png' alt='' />
-              <div className='infos'>
-                <h3>DRUM D4E</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/pec3.png' alt='' />
-              <div className='infos'>
-                <h3>Ponta de eixo D8K</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/pec1.png' alt='' />
-              <div className='infos'>
-                <h3>Coroa e Cubo 70ci</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/pec2.png' alt='' />
-              <div className='infos'>
-                <h3>DRUM D4E</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
-            <div className='card'>
-              <img src='/pec3.png' alt='' />
-              <div className='infos'>
-                <h3>Ponta de eixo D8K</h3>
-                <p>
-                  <FaTag color='var(--principal-darkness-2)' size={20} />
-                  Coroa Lateral e Cubo Estriado para FIAT 70Ci
-                </p>
-                <a href='#'>Ver Mais</a>
-              </div>
-            </div>
+            ))}
           </Slider>
         </div>
 
