@@ -1,5 +1,7 @@
+import axios from 'axios';
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
@@ -7,6 +9,18 @@ import { Container } from '../styles/pages/search';
 import { Title } from '../styles/Title';
 
 const Search: NextPage = () => {
+  const [categories, setCategories] = useState([]);
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:3000/api',
+  });
+
+  useEffect(() => {
+    instance.get('/categories').then((res) => {
+      setCategories(res.data);
+    });
+  }, []);
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
@@ -71,6 +85,11 @@ const Search: NextPage = () => {
               <label htmlFor='category'>Categoria</label>
               <select name='category' id='category' required>
                 <option selected>Selecione</option>
+                {categories.map((category: CategoryInterface) => (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

@@ -19,3 +19,8 @@ interface PieceInterface {
   value: string;
   machine_model: string;
 }
+
+interface CategoryInterface {
+  id: string;
+  name: string;
+}
