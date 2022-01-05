@@ -206,5 +206,5 @@
 // export default Piece;
 
 export default function Piece() {
-  return;
+  return <h1>Hi!</h1>;
 }
