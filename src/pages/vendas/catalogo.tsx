@@ -13,7 +13,7 @@ const Catalog: NextPage = () => {
   const [pieces, setPieces] = useState([]);
 
   const instance = axios.create({
-    baseURL: 'https://viamaq.vercel.app/api',
+    baseURL: 'http://localhost:3000/api',
   });
 
   useEffect(() => {

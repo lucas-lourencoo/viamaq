@@ -21,8 +21,7 @@
     "**/*.tsx",
     "next.config.js",
     "src/pages/api/machines/[id].js",
-    "src/pages/api/pieces/index.ts",
-    "src/pages/vendas/pecas/[id].tsx.not"
+    "src/pages/api/pieces/index.ts"
   ],
   "exclude": ["node_modules"]
 }

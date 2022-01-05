@@ -12,7 +12,7 @@ const Search: NextPage = () => {
   const [categories, setCategories] = useState([]);
 
   const instance = axios.create({
-    baseURL: 'https://viamaq.vercel.app/api',
+    baseURL: 'http://localhost:3000/api',
   });
 
   useEffect(() => {
