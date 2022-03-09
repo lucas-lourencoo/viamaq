@@ -182,7 +182,7 @@ const Piece = ({ piece }: PieceProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('http://localhost:3000/api/pieces');
+  const res = await fetch('https://viamaq.vercel.app/api/pieces');
   const piece = await res.json();
 
   const paths = piece.map((piece: any) => ({
@@ -196,7 +196,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `http://localhost:3000/api/pieces/${paths?.params?.id}`
+    `https://viamaq.vercel.app/api/pieces/${paths?.params?.id}`
   );
   const piece = (await res.json()) ?? null;
 

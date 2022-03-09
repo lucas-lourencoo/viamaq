@@ -5,18 +5,15 @@ import { useEffect, useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
+import api from '../services/axios';
 import { Container } from '../styles/pages/search';
 import { Title } from '../styles/Title';
 
 const Search: NextPage = () => {
   const [categories, setCategories] = useState([]);
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000/api',
-  });
-
   useEffect(() => {
-    instance.get('/categories').then((res) => {
+    api.get('/categories').then((res) => {
       setCategories(res.data);
     });
   }, []);
