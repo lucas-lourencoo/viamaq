@@ -10,16 +10,19 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
 
+type Machine = {
+  id: string;
+  model: string;
+  year: number;
+  hourmeter: string;
+  image: string;
+  value: string;
+  brand: string;
+  category_id: string;
+};
+
 interface MachineProps {
-  machine: {
-    model: string;
-    year: number;
-    hourmeter: string;
-    image: string;
-    value: string;
-    brand: string;
-    category_id: string;
-  };
+  machine: Machine;
 }
 
 const Machine = ({ machine }: MachineProps) => {
@@ -177,7 +180,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch('https://viamaq.vercel.app/api/machines');
   const machine = await res.json();
 
-  const paths = machine.map((machine: any) => ({
+  const paths = machine.map((machine: Machine) => ({
     params: {
       id: machine.id,
     },

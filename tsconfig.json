@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js",
-    "src/pages/api/machines/[id].js",
+    "src/pages/api/machines/[id].ts",
     "src/pages/api/pieces/index.ts"
   ],
   "exclude": ["node_modules"]

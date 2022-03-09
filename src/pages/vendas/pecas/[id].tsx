@@ -16,16 +16,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
 import { Container } from '../../../styles/pages/single';
 
+type Piece = {
+  id: string;
+  name: string;
+  brand: string;
+  description: string | null;
+  image: string;
+  value: string;
+  machine_model: string;
+};
+
 interface PieceProps {
-  piece: {
-    id: string;
-    name: string;
-    brand: string;
-    description: string | null;
-    image: string;
-    value: string;
-    machine_model: string;
-  };
+  piece: Piece;
 }
 
 const Piece = ({ piece }: PieceProps) => {
@@ -185,7 +187,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch('https://viamaq.vercel.app/api/pieces');
   const piece = await res.json();
 
-  const paths = piece.map((piece: any) => ({
+  const paths = piece.map((piece: Piece) => ({
     params: {
       id: piece.id,
     },
@@ -194,10 +196,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true };
 };
 
-export const getStaticProps: GetStaticProps = async (paths) => {
-  const res = await fetch(
-    `https://viamaq.vercel.app/api/pieces/${paths?.params?.id}`
-  );
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const res = await fetch(`https://viamaq.vercel.app/api/pieces/${params?.id}`);
   const piece = (await res.json()) ?? null;
 
   return { props: { piece } };
