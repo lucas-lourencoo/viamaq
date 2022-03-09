@@ -13,34 +13,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from 'react';
 import api from '../services/axios';
 
-type Machine = {
-  id: string;
-  name: string;
-  image: string;
-  model: string;
-  brand: string;
-  year: number;
-  hourmeter: string;
-  description: string;
-  category_id: string;
-  value: string;
-};
-
-type Piece = {
-  id: string;
-  name: string;
-  brand: string;
-  description: string;
-  image: string;
-  value: string;
-  machine_model: string;
-};
-
-interface HomePageProps {
-  machines: Machine[];
-  pieces: Piece[];
-}
-
 const Home = () => {
   const [machines, setMachines] = useState([]);
   const [pieces, setPieces] = useState([]);
