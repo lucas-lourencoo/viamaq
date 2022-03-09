@@ -29,7 +29,7 @@ const Catalog: NextPage = () => {
       <Head>
         <title>Viamaq - Tratores e Peças | Catálogo</title>
       </Head>
-      <Header />
+
       <Paginator text='Venda | Catálogo' />
 
       <main>

@@ -13,7 +13,6 @@ const About: NextPage = () => {
         <title>Viamaq - Tratores e Peças | Sobre</title>
       </Head>
 
-      <Header />
       <Paginator text={'Sobre'} />
 
       <main className='centerText'>

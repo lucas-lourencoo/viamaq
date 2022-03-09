@@ -27,7 +27,7 @@ const Search: NextPage = () => {
       <Head>
         <title>Viamaq - Tratores e Peças | Buscar máquinas</title>
       </Head>
-      <Header />
+
       <Paginator text='Buscar máquinas' />
 
       <main>

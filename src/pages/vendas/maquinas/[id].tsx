@@ -52,7 +52,7 @@ const Machine = ({ machine }: MachineProps) => {
       <Head>
         <title>Viamaq - Tratores e Peças | ${machine?.model}</title>
       </Head>
-      <Header />
+
       <Paginator text={`Venda | Máquinas | ${machine?.model}`} />
 
       <main>

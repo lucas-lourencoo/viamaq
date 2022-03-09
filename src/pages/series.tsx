@@ -14,7 +14,6 @@ const Series: NextPage = () => {
         <title>Viamaq - Tratores e Peças | Série de Máquinas</title>
       </Head>
 
-      <Header />
       <Paginator text='Série de Máquinas' />
 
       <main>

@@ -47,7 +47,7 @@ const Piece = ({ piece }: PieceProps) => {
       <Head>
         <title>Viamaq - Tratores e Peças | ${piece?.name}</title>
       </Head>
-      <Header />
+
       <Paginator
         text={`Venda | Peças | ${piece?.name} - ${piece?.machine_model}`}
       />

@@ -14,7 +14,6 @@ const Contato: NextPage = () => {
         <title>Viamaq - Tratores e Peças | Contato</title>
       </Head>
 
-      <Header />
       <Paginator text='Contato' />
 
       <iframe
