@@ -73,7 +73,7 @@ const Machine = ({ machine }: MachineProps) => {
                 <FaTachometerAlt /> Horímetro: {machine?.hourmeter}
               </span>
             </div>
-            <p>{machine.description}</p>
+            <p>{machine?.description}</p>
           </section>
         </section>
 
