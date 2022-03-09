@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   isActive: boolean;
+  screenSize: number;
 }
 
 export const Container = styled.header<ContainerProps>`
+  display: ${(props) => props.screenSize <= 720 && 'none'};
   width: 100%;
   background: var(--white);
   overflow: visible;

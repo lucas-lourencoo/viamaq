@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 export function Header() {
   const [isActive, setActive] = useState(false);
+  const [screenSize, setScreenSize] = useState(0);
 
   useEffect(() => {
     const checkScrollTop = () => {
@@ -17,10 +18,11 @@ export function Header() {
     };
 
     window.addEventListener('scroll', checkScrollTop);
+    setScreenSize(screen.width);
   });
 
   return (
-    <Container isActive={isActive}>
+    <Container isActive={isActive} screenSize={screenSize}>
       <div className='blueTop'>
         <div className='container'>
           <div className='contact'>

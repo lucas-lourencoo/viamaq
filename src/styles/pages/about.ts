@@ -43,9 +43,20 @@ export const Container = styled.main`
     gap: 5rem;
     align-items: center;
 
+    @media (max-width: 720px) {
+      grid-template-columns: none;
+      margin: 2rem auto;
+      max-width: 90%;
+      gap: 2rem;
+    }
+
     ${Title} {
       margin-bottom: 1.5rem;
       animation: appear 1.5s forwards;
+
+      @media (max-width: 720px) {
+        font-size: 2rem;
+      }
     }
 
     p {

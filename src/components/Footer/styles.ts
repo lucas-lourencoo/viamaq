@@ -18,6 +18,11 @@ export const Container = styled.footer`
       padding: 5rem 0;
       gap: 3rem;
 
+      @media (max-width: 720px) {
+        grid-template-columns: none;
+        max-width: 90%;
+      }
+
       svg {
         color: var(--principal-lighter-2);
         margin-right: 0.5rem;

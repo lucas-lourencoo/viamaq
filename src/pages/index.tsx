@@ -1,7 +1,5 @@
-import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Header } from '../components/Header';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import { Footer } from '../components/Footer';
@@ -37,6 +35,15 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings2 = {
@@ -49,6 +56,15 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings3 = {
@@ -61,6 +77,15 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -69,7 +94,6 @@ const Home = () => {
         <title>Viamaq - Tratores e Peças | Início</title>
       </Head>
 
-      <Header />
       <main>
         <div className='banner'>
           <div className='text'>

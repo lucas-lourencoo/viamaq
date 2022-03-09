@@ -20,6 +20,13 @@ export const Container = styled.main`
     margin: 5rem auto;
     align-items: center;
 
+    @media (max-width: 720px) {
+      grid-template-columns: none;
+      max-width: 90%;
+      margin: 2.5rem auto;
+      gap: 2rem;
+    }
+
     .left {
       width: 100%;
 
@@ -65,6 +72,10 @@ export const Container = styled.main`
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           gap: 1.5rem;
+
+          @media (max-width: 720px) {
+            grid-template-columns: none;
+          }
 
           input {
             background: #fafaf5;
