@@ -8,7 +8,7 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    height: 70vh;
+    height: 80vh;
     width: 100%;
     position: relative;
     display: flex;

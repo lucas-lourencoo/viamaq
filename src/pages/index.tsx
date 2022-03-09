@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import { Footer } from '../components/Footer';
@@ -8,7 +9,6 @@ import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useEffect, useState } from 'react';
 import api from '../services/axios';
 
 const Home = () => {
@@ -17,10 +17,12 @@ const Home = () => {
 
   useEffect(() => {
     async function getData() {
-      await api.get('/machines/destaques').then((res) => {
+      await api.get('/machines/destaques').then((res: any) => {
         setMachines(res.data);
       });
-      await api.get('/pieces/destaques').then((res) => setPieces(res.data));
+      await api
+        .get('/pieces/destaques')
+        .then((res: any) => setPieces(res.data));
     }
 
     getData();
@@ -62,6 +64,8 @@ const Home = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '20px',
         },
       },
     ],
@@ -83,6 +87,8 @@ const Home = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '30px',
         },
       },
     ],
