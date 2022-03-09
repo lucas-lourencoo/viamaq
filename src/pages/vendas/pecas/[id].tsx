@@ -60,7 +60,7 @@ const Piece = ({ piece }: PieceProps) => {
             <h1>
               <FaCogs /> {piece?.name}
             </h1>
-            <span>Categoria: Compactadores combinados</span>
+            <span>Categoria:{piece?.machine_model}</span>
             <hr />
             <div className='fewInfos'>
               <span>
@@ -70,12 +70,7 @@ const Piece = ({ piece }: PieceProps) => {
                 <FaTachometerAlt /> Horímetro: 0
               </span>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-              aliquam pellentesque integer sed lobortis et. Eu risus mattis
-              scelerisque pulvinar. A, mattis imperdiet sagittis, nunc mollis
-              luctus fusce ultricies viverra.
-            </p>
+            <p>{piece?.description}</p>
           </section>
         </section>
 
@@ -184,7 +179,7 @@ const Piece = ({ piece }: PieceProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://localhost:3000/api/pieces');
+  const res = await fetch('http://localhost:3000/api/pieces');
   const piece = await res.json();
 
   const paths = piece.map((piece: Piece) => ({
@@ -197,7 +192,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(`https://localhost:3000/api/pieces/${params?.id}`);
+  const res = await fetch(`http://localhost:3000/api/pieces/${params?.id}`);
   const piece = (await res.json()) ?? null;
 
   return { props: { piece } };

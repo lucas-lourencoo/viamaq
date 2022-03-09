@@ -140,9 +140,9 @@ const Catalog: NextPage = () => {
         </section>
         <section className='grid'>
           {machines.map((machine: MachineInterface) => (
-            <Link href={`/vendas/machine/${machine.id}`}>
+            <Link href={`/vendas/maquinas/${machine.id}`}>
               <div className='item' key={machine.id}>
-                <img src={machine.image} alt='' />
+                <img src={machine.image} alt={machine.model} />
                 <h2>{machine.model}</h2>
               </div>
             </Link>
@@ -151,7 +151,7 @@ const Catalog: NextPage = () => {
             <Link href={`/vendas/pecas/${piece.id}`}>
               <div className='item' key={piece.id}>
                 <figure>
-                  <img src={piece.image} alt='' />
+                  <img src={piece.image} alt={piece.name} />
                 </figure>
                 <h2>
                   {piece.name} - {piece.machine_model}

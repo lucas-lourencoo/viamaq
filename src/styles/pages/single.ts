@@ -14,6 +14,11 @@ export const Container = styled.main<ContainerProps>`
     max-width: 1200px;
     margin: 5rem auto;
 
+    @media (max-width: 720px) {
+      margin: 2.5rem auto;
+      max-width: 90%;
+    }
+
     @keyframes appear {
       from {
         opacity: 0;
@@ -53,7 +58,13 @@ export const Container = styled.main<ContainerProps>`
       gap: 5rem;
       align-items: center;
       cursor: default;
-      min-height: 22rem;
+
+      @media (max-width: 720px) {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        gap: 2.5rem;
+        margin: 2.5rem auto;
+      }
 
       .image {
         opacity: 0;

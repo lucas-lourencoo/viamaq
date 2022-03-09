@@ -18,6 +18,7 @@ type Machine = {
   image: string;
   value: string;
   brand: string;
+  description: string;
   category_id: string;
 };
 
@@ -35,6 +36,15 @@ const Machine = ({ machine }: MachineProps) => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -51,24 +61,19 @@ const Machine = ({ machine }: MachineProps) => {
 
           <section className='info'>
             <h1>
-              <FaTractor /> CDM 512D
+              <FaTractor /> {machine?.model}
             </h1>
             <span>Categoria: Compactadores combinados</span>
             <hr />
             <div className='fewInfos'>
               <span>
-                <FaCalendar /> Ano de Fabricação: 2012
+                <FaCalendar /> Ano de Fabricação: {machine?.year}
               </span>
               <span>
-                <FaTachometerAlt /> Horímetro: 0
+                <FaTachometerAlt /> Horímetro: {machine?.hourmeter}
               </span>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-              aliquam pellentesque integer sed lobortis et. Eu risus mattis
-              scelerisque pulvinar. A, mattis imperdiet sagittis, nunc mollis
-              luctus fusce ultricies viverra.
-            </p>
+            <p>{machine.description}</p>
           </section>
         </section>
 
@@ -177,7 +182,7 @@ const Machine = ({ machine }: MachineProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://localhost:3000/api/machines');
+  const res = await fetch('http://localhost:3000/api/machines');
   const machine = await res.json();
 
   const paths = machine.map((machine: Machine) => ({
@@ -191,7 +196,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `https://localhost:3000/api/machines/${paths?.params?.id}`
+    `http://localhost:3000/api/machines/${paths?.params?.id}`
   );
   const machine = (await res.json()) ?? null;
 
