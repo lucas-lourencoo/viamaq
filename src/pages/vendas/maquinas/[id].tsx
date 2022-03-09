@@ -177,7 +177,7 @@ const Machine = ({ machine }: MachineProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://viamaq.vercel.app/api/machines');
+  const res = await fetch('https://localhost:3000/api/machines');
   const machine = await res.json();
 
   const paths = machine.map((machine: Machine) => ({
@@ -191,7 +191,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `https://viamaq.vercel.app/api/machines/${paths?.params?.id}`
+    `https://localhost:3000/api/machines/${paths?.params?.id}`
   );
   const machine = (await res.json()) ?? null;
 
