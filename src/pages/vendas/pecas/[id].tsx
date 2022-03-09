@@ -43,13 +43,13 @@ const Piece = ({ piece }: PieceProps) => {
   };
 
   return (
-    <Container image={piece.image}>
+    <Container image={piece?.image}>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${piece.name}</title>
+        <title>Viamaq - Tratores e Peças | ${piece?.name}</title>
       </Head>
       <Header />
       <Paginator
-        text={`Venda | Peças | ${piece.name} - ${piece.machine_model}`}
+        text={`Venda | Peças | ${piece?.name} - ${piece?.machine_model}`}
       />
 
       <main>
@@ -58,7 +58,7 @@ const Piece = ({ piece }: PieceProps) => {
 
           <section className='info'>
             <h1>
-              <FaCogs /> {piece.name}
+              <FaCogs /> {piece?.name}
             </h1>
             <span>Categoria: Compactadores combinados</span>
             <hr />

@@ -38,12 +38,12 @@ const Machine = ({ machine }: MachineProps) => {
   };
 
   return (
-    <Container image={machine.image}>
+    <Container image={machine?.image}>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${machine.model}</title>
+        <title>Viamaq - Tratores e Peças | ${machine?.model}</title>
       </Head>
       <Header />
-      <Paginator text={`Venda | Máquinas | ${machine.model}`} />
+      <Paginator text={`Venda | Máquinas | ${machine?.model}`} />
 
       <main>
         <section className='machineGrid'>
