@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Header } from '../components/Header';
@@ -11,15 +11,50 @@ import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/axios';
 
-const Home: NextPage = () => {
+type Machine = {
+  id: string;
+  name: string;
+  image: string;
+  model: string;
+  brand: string;
+  year: number;
+  hourmeter: string;
+  description: string;
+  category_id: string;
+  value: string;
+};
+
+type Piece = {
+  id: string;
+  name: string;
+  brand: string;
+  description: string;
+  image: string;
+  value: string;
+  machine_model: string;
+};
+
+interface HomePageProps {
+  machines: Machine[];
+  pieces: Piece[];
+}
+
+const Home = () => {
   const [machines, setMachines] = useState([]);
   const [pieces, setPieces] = useState([]);
 
-  const instance = axios.create({
-    baseURL: 'https://viamaq.vercel.app/api',
-  });
+  useEffect(() => {
+    async function getData() {
+      await api.get('/machines/destaques').then((res) => {
+        setMachines(res.data);
+      });
+      await api.get('/pieces/destaques').then((res) => setPieces(res.data));
+    }
+
+    getData();
+  }, []);
 
   const settings = {
     dots: false,
@@ -49,21 +84,12 @@ const Home: NextPage = () => {
     arrows: false,
     infinite: true,
     speed: 700,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
   };
-
-  useEffect(() => {
-    instance.get('/machines/destaques').then((res) => {
-      setMachines(res.data);
-    });
-    instance.get('/pieces/destaques').then((res) => {
-      setPieces(res.data);
-    });
-  }, []);
 
   return (
     <Container>

@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Paginator } from '../../components/Paginator';
+import api from '../../services/axios';
 import { Container } from '../../styles/pages/catalog';
 
 const Catalog: NextPage = () => {
@@ -12,12 +12,8 @@ const Catalog: NextPage = () => {
   const [machines, setMachines] = useState([]);
   const [pieces, setPieces] = useState([]);
 
-  const instance = axios.create({
-    baseURL: 'https://viamaq.vercel.app/api',
-  });
-
   useEffect(() => {
-    instance.get('/catalog').then((res) => {
+    api.get('/catalog').then((res) => {
       setMachines(res.data.machines);
       setPieces(res.data.pieces);
     });

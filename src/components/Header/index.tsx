@@ -25,13 +25,13 @@ export function Header() {
         <div className='container'>
           <div className='contact'>
             <a href='#'>
-              <FiPhone size={22} /> (67) 9 9999-9999
+              <FiPhone size={22} /> (67) 3355-5562
             </a>
             <a href='#'>
-              <FiMail size={22} /> email@email.org
+              <FiMail size={22} /> viamaq@viamaqtratores.com.br
             </a>
             <a href='#'>
-              <FaWhatsapp size={22} /> (67) 998161-1571
+              <FaWhatsapp size={22} /> (67) 99861-2017
             </a>
           </div>
           <div className='social'>
