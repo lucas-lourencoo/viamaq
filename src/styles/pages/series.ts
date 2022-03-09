@@ -27,6 +27,10 @@ export const Container = styled.main`
     text-align: center;
     margin-top: 5rem;
     animation: item 1s forwards;
+
+    @media (max-width: 720px) {
+      margin-top: 2.5rem;
+    }
   }
 
   .seriesGrid {
@@ -35,6 +39,13 @@ export const Container = styled.main`
     gap: 1.5rem;
     max-width: 1200px;
     margin: 3rem auto 5rem;
+
+    @media (max-width: 720px) {
+      grid-template-columns: none;
+      max-width: 90%;
+      margin: 2rem auto 5rem;
+      gap: 2rem;
+    }
 
     .item {
       opacity: 0;

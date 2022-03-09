@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   isActive: boolean;
+  screenSize: number;
 }
 
 export const Container = styled.header<ContainerProps>`
+  display: ${(props) => props.screenSize <= 720 && 'none'};
   width: 100%;
   background: var(--white);
   overflow: visible;
@@ -22,7 +24,7 @@ export const Container = styled.header<ContainerProps>`
       justify-content: space-between;
       margin: 0 auto;
       max-width: 1200px;
-      padding: 0.5rem 0;
+      padding: 0.4rem 0;
 
       svg {
         color: var(--principal-lighter-1);
@@ -38,8 +40,8 @@ export const Container = styled.header<ContainerProps>`
           align-items: center;
           justify-content: center;
           color: var(--white);
-          font-size: 1.125rem;
-          padding-right: 1.5rem;
+          font-size: 1rem;
+          padding-right: 1rem;
           transition: 0.2s;
 
           :hover {

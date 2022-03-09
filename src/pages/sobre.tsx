@@ -20,23 +20,19 @@ const About: NextPage = () => {
         <article>
           <Title>Sobre nós</Title>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-            aliquam pellentesque integer sed lobortis et. Eu risus mattis
-            scelerisque pulvinar. A, mattis imperdiet sagittis, nunc mollis
-            luctus fusce ultricies viverra. orem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mattis aliquam pellentesque integer sed
-            lobortis et. Eu risus mattis scelerisque pulvinar. A, mattis
-            imperdiet sagittis, nunc mollis luctus fusce ultricies viverra.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-            aliquam pellentesque integer sed lobortis et.
+            A VIAMAQ TRATORES é uma empresa de especializada na compra e venda
+            de máquinas pesadas para construção e tratores agrícolas, bem como
+            de peças de reposição e serviços. Com sede em Campo Grande/MS,
+            possui uma estrutura de preparação de máquinas e equipamentos e um
+            departamento de vendas, que permitem atender seus clientes com
+            eficiência e pontualidade tendo como outro diferencial uma equipe
+            técnica e de vendas qualificada, sempre disposta suprir as
+            necessidades do mercado de máquinas pesadas.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-            aliquam pellentesque integer sed lobortis et. Eu risus mattis
-            scelerisque pulvinar. A, mattis imperdiet sagittis, nunc mollis
-            luctus fusce ultricies viverra. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Mattis aliquam pellentesque integer sed
-            lobortis et. Eu risus mattis scelerisque pulvinar.
+            A missão da VIAMAQ TRATORES é preencher uma lacuna existente no
+            mercado de máquinas usadas, oferecendo o bom atendimento de uma
+            equipe experiente aliada com um pensamento moderno e arrojado.
           </p>
         </article>
         <img src='/about.png' alt='Trator sobre' />

@@ -35,8 +35,7 @@ const Contato: NextPage = () => {
                 <FiMapPin size={24} />
               </span>
               <span>
-                Av. Ministro João Arinos, 4136 | B. Tirandentes Campo Grande
-                Mato Grosso do Sul. CEP 79062-120
+                Av. Coronel Antonino, 5153 | Campo Grande/MS - 7910000
               </span>
             </div>
           </li>
@@ -46,7 +45,7 @@ const Contato: NextPage = () => {
               <span>
                 <FiPhone size={24} />
               </span>
-              <span>+55 67 3342-9000</span>
+              <span>+55 67 3355-5562</span>
             </div>
           </li>
           <li>
@@ -55,7 +54,7 @@ const Contato: NextPage = () => {
               <span>
                 <FiMail size={24} />
               </span>
-              <span>contato@ieducaa.org</span>
+              <span>viamaq@viamaqtratores.com.br</span>
             </div>
           </li>
         </ul>

@@ -13,6 +13,12 @@ export const Container = styled.main`
     max-width: 1200px;
     margin: 5rem auto;
 
+    @media (max-width: 720px) {
+      grid-template-columns: none;
+      width: 90%;
+      margin: 2.5rem auto;
+    }
+
     .filter {
       @keyframes fromLeft {
         from {
@@ -111,6 +117,10 @@ export const Container = styled.main`
       width: 100%;
       gap: 1.5rem;
       animation: fromRight 1s forwards;
+
+      @media (max-width: 720px) {
+        grid-template-columns: none;
+      }
 
       .item {
         width: 100%;

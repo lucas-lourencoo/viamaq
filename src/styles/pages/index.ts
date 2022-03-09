@@ -8,7 +8,8 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    min-height: 81vh;
+    height: 70vh;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -18,6 +19,11 @@ export const Container = styled.div`
       color: var(--white);
       margin-left: 7rem;
       max-width: 600px;
+
+      @media (max-width: 720px) {
+        max-width: 90%;
+        margin: 0 auto;
+      }
 
       @keyframes appear {
         from {
@@ -46,6 +52,10 @@ export const Container = styled.div`
         margin-bottom: 1.5rem;
         font-family: 'DroidSans', sans-serif;
         animation: appear 1s forwards;
+
+        @media (max-width: 720px) {
+          font-size: 3.2rem;
+        }
       }
 
       hr {
@@ -98,13 +108,23 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
-    margin: 5rem auto;
+    margin: 3rem auto;
     gap: 5rem;
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 720px) {
+      grid-template-columns: none;
+      gap: 2rem;
+      max-width: 90%;
+    }
+
     img {
       max-width: 514px;
+
+      @media (max-width: 720px) {
+        max-width: 100%;
+      }
     }
 
     .text {
@@ -126,6 +146,10 @@ export const Container = styled.div`
   .destaques {
     max-width: 1200px;
     margin: 0 auto;
+
+    @media (max-width: 720px) {
+      max-width: 90%;
+    }
 
     .card {
       box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
@@ -216,6 +240,11 @@ export const Container = styled.div`
   .destaquesPieces {
     max-width: 1200px;
     margin: 5rem auto;
+
+    @media (max-width: 720px) {
+      max-width: 90%;
+      margin: 3rem auto;
+    }
 
     .card {
       box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);

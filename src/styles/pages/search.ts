@@ -10,12 +10,21 @@ export const Container = styled.main`
     max-width: 1200px;
     margin: 5rem auto;
 
+    @media (max-width: 720px) {
+      max-width: 90%;
+      margin-top: 2.5rem;
+    }
+
     form {
       .grid {
         display: grid;
         grid-auto-flow: row;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
+
+        @media (max-width: 720px) {
+          grid-template-columns: none;
+        }
 
         .inputGroup {
           display: flex;

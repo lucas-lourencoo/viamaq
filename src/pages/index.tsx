@@ -1,7 +1,5 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
-import { Header } from '../components/Header';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import { Footer } from '../components/Footer';
@@ -11,15 +9,22 @@ import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/axios';
 
-const Home: NextPage = () => {
+const Home = () => {
   const [machines, setMachines] = useState([]);
   const [pieces, setPieces] = useState([]);
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000/api',
-  });
+  useEffect(() => {
+    async function getData() {
+      await api.get('/machines/destaques').then((res) => {
+        setMachines(res.data);
+      });
+      await api.get('/pieces/destaques').then((res) => setPieces(res.data));
+    }
+
+    getData();
+  }, []);
 
   const settings = {
     dots: false,
@@ -30,6 +35,15 @@ const Home: NextPage = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings2 = {
@@ -42,6 +56,15 @@ const Home: NextPage = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings3 = {
@@ -49,21 +72,21 @@ const Home: NextPage = () => {
     arrows: false,
     infinite: true,
     speed: 700,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
-  useEffect(() => {
-    instance.get('/machines/destaques').then((res) => {
-      setMachines(res.data);
-    });
-    instance.get('/pieces/destaques').then((res) => {
-      setPieces(res.data);
-    });
-  }, []);
 
   return (
     <Container>
@@ -71,7 +94,6 @@ const Home: NextPage = () => {
         <title>Viamaq - Tratores e Peças | Início</title>
       </Head>
 
-      <Header />
       <main>
         <div className='banner'>
           <div className='text'>
