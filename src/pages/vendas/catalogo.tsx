@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -139,20 +140,24 @@ const Catalog: NextPage = () => {
         </section>
         <section className='grid'>
           {machines.map((machine: MachineInterface) => (
-            <div className='item' key={machine.id}>
-              <img src={machine.image} alt='' />
-              <h2>{machine.model}</h2>
-            </div>
+            <Link href={`/vendas/machine/${machine.id}`}>
+              <div className='item' key={machine.id}>
+                <img src={machine.image} alt='' />
+                <h2>{machine.model}</h2>
+              </div>
+            </Link>
           ))}
           {pieces.map((piece: PieceInterface) => (
-            <div className='item' key={piece.id}>
-              <figure>
-                <img src={piece.image} alt='' />
-              </figure>
-              <h2>
-                {piece.name} - {piece.machine_model}
-              </h2>
-            </div>
+            <Link href={`/vendas/pecas/${piece.id}`}>
+              <div className='item' key={piece.id}>
+                <figure>
+                  <img src={piece.image} alt='' />
+                </figure>
+                <h2>
+                  {piece.name} - {piece.machine_model}
+                </h2>
+              </div>
+            </Link>
           ))}
         </section>
       </main>
