@@ -16,6 +16,7 @@ interface HomeProps {
 }
 
 const Home = ({ machines, pieces }: HomeProps) => {
+  console.log(pieces);
   const settings = {
     dots: false,
     infinite: true,
@@ -133,27 +134,34 @@ const Home = ({ machines, pieces }: HomeProps) => {
           <Slider {...settings}>
             {machines.map((machine: Machine, index: number) => (
               <div className='card' key={index}>
+                {console.log(machine.attributes.images.data[0].attributes.url)}
                 <figure>
-                  <img src={machine.image} alt='' />
+                  <img
+                    src={
+                      'http://localhost:1337' +
+                      machine.attributes.images.data[0].attributes.url
+                    }
+                    alt=''
+                  />
                 </figure>
 
                 <div className='infos'>
-                  <h3>{machine.model}</h3>
+                  <h3>{machine.attributes.model}</h3>
                   <p>
                     <FaTag color='var(--principal-darkness-2)' /> Compactadores
                     Combinados (CIL / PNEUS)
                   </p>
                   <p>
                     <FaTractor color='var(--principal-darkness-2)' />
-                    {machine.brand}
+                    {machine.attributes.brand}
                   </p>
                   <p>
                     <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                    Fabricação: {machine.year}
+                    Fabricação: {machine.attributes.year}
                   </p>
                   <p>
                     <FaTachometerAlt color='var(--principal-darkness-2)' />
-                    Horimetro: {machine.hourmeter}
+                    Horimetro: {machine.attributes.hourmeter}
                   </p>
                   <Link href={`/vendas/maquinas/${machine.id}`} passHref>
                     <a href=''>Ver Mais</a>
@@ -205,15 +213,21 @@ const Home = ({ machines, pieces }: HomeProps) => {
             {pieces.map((piece: Piece, index: number) => (
               <div className='card' key={index}>
                 <figure>
-                  <img src={piece.image} alt={piece.name} />
+                  <img
+                    src={
+                      'http://localhost:1337' +
+                      piece.attributes.images.data[0].attributes.url
+                    }
+                    alt={piece.attributes.name}
+                  />
                 </figure>
                 <div className='infos'>
                   <h3>
-                    {piece.name} - {piece.machine_model}
+                    {piece.attributes.name} - {piece.attributes.machine_model}
                   </h3>
                   <p>
                     <FaTag color='var(--principal-darkness-2)' size={20} />
-                    {piece.brand.toUpperCase()}
+                    {piece.attributes.brand.toUpperCase()}
                   </p>
                   <a href='#'>Ver Mais</a>
                 </div>
@@ -240,10 +254,10 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const machinesResponse = await fetch(
-    'https://viamaq.vercel.app/api/machines/destaques'
+    'http://localhost:1337/api/maquinas?populate[0]=images'
   );
   const piecesResponse = await fetch(
-    'https://viamaq.vercel.app/api/pieces/destaques'
+    'http://localhost:1337/api/pecas?populate[0]=images'
   );
 
   const machines = await machinesResponse.json();
@@ -251,8 +265,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      machines,
-      pieces,
+      machines: machines.data,
+      pieces: pieces.data,
     },
   };
 };

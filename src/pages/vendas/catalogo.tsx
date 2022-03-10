@@ -13,9 +13,12 @@ const Catalog: NextPage = () => {
   const [pieces, setPieces] = useState([]);
 
   useEffect(() => {
-    api.get('/catalog').then((res) => {
-      setMachines(res.data.machines);
-      setPieces(res.data.pieces);
+    api.get('/maquinas?populate[0]=images').then((res) => {
+      setMachines(res.data.data);
+    });
+    api.get('/pecas?populate[0]=images').then((res) => {
+      console.log(res.data.data);
+      setPieces(res.data.data);
     });
   }, []);
 
@@ -138,22 +141,34 @@ const Catalog: NextPage = () => {
           </form>
         </section>
         <section className='grid'>
-          {machines.map((machine: MachineInterface) => (
+          {machines.map((machine: Machine) => (
             <Link href={`/vendas/maquinas/${machine.id}`} key={machine.id}>
               <div className='item'>
-                <img src={machine.image} alt={machine.model} />
-                <h2>{machine.model}</h2>
+                <img
+                  src={
+                    'http://localhost:1337' +
+                    machine.attributes.images.data[0].attributes.url
+                  }
+                  alt={machine.attributes.model}
+                />
+                <h2>{machine.attributes.model}</h2>
               </div>
             </Link>
           ))}
-          {pieces.map((piece: PieceInterface) => (
+          {pieces.map((piece: Piece) => (
             <Link href={`/vendas/pecas/${piece.id}`} key={piece.id}>
               <div className='item'>
                 <figure>
-                  <img src={piece.image} alt={piece.name} />
+                  <img
+                    src={
+                      'http://localhost:1337' +
+                      piece.attributes.images.data[0].attributes.url
+                    }
+                    alt={piece.attributes.name}
+                  />
                 </figure>
                 <h2>
-                  {piece.name} - {piece.machine_model}
+                  {piece.attributes.name} - {piece.attributes.machine_model}
                 </h2>
               </div>
             </Link>

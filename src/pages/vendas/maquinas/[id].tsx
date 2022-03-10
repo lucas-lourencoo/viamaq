@@ -14,6 +14,7 @@ interface MachineProps {
 }
 
 const Machine = ({ machine }: MachineProps) => {
+  console.log(machine);
   const settings = {
     dots: false,
     infinite: true,
@@ -35,12 +36,12 @@ const Machine = ({ machine }: MachineProps) => {
   };
 
   return (
-    <Container image={machine?.image}>
+    <Container image={machine?.attributes?.images.data[0].attributes.url}>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${machine?.model}</title>
+        <title>Viamaq - Tratores e Peças | ${machine?.attributes.model}</title>
       </Head>
 
-      <Paginator text={`Venda | Máquinas | ${machine?.model}`} />
+      <Paginator text={`Venda | Máquinas | ${machine?.attributes.model}`} />
 
       <main>
         <section className='machineGrid'>
@@ -48,19 +49,19 @@ const Machine = ({ machine }: MachineProps) => {
 
           <section className='info'>
             <h1>
-              <FaTractor /> {machine?.model}
+              <FaTractor /> {machine?.attributes.model}
             </h1>
             <span>Categoria: Compactadores combinados</span>
             <hr />
             <div className='fewInfos'>
               <span>
-                <FaCalendar /> Ano de Fabricação: {machine?.year}
+                <FaCalendar /> Ano de Fabricação: {machine?.attributes.year}
               </span>
               <span>
-                <FaTachometerAlt /> Horímetro: {machine?.hourmeter}
+                <FaTachometerAlt /> Horímetro: {machine?.attributes.hourmeter}
               </span>
             </div>
-            <p>{machine?.description}</p>
+            <p>{machine?.attributes.description}</p>
           </section>
         </section>
 
@@ -169,12 +170,14 @@ const Machine = ({ machine }: MachineProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://viamaq.vercel.app/api/machines');
+  const res = await fetch(
+    'http://localhost:1337/api/maquinas?populate[0]=images'
+  );
   const machine = await res.json();
 
-  const paths = machine.map((machine: Machine) => ({
+  const paths = machine.data.map((machine: Machine) => ({
     params: {
-      id: machine.id,
+      id: machine.id.toString(),
     },
   }));
 
@@ -183,11 +186,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `https://viamaq.vercel.app/api/machines/${paths?.params?.id}`
+    `http://localhost:1337/api/maquinas/${paths?.params?.id}?populate[0]=images`
   );
   const machine = (await res.json()) ?? null;
 
-  return { props: { machine } };
+  return { props: { machine: machine.data } };
 };
 
 export default Machine;

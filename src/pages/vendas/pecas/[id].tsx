@@ -32,13 +32,13 @@ const Piece = ({ piece }: PieceProps) => {
   };
 
   return (
-    <Container image={piece?.image}>
+    <Container image={piece?.attributes.images.data[0].attributes.url}>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${piece?.name}</title>
+        <title>Viamaq - Tratores e Peças | ${piece?.attributes.name}</title>
       </Head>
 
       <Paginator
-        text={`Venda | Peças | ${piece?.name} - ${piece?.machine_model}`}
+        text={`Venda | Peças | ${piece?.attributes.name} - ${piece?.attributes.machine_model}`}
       />
 
       <main>
@@ -47,9 +47,9 @@ const Piece = ({ piece }: PieceProps) => {
 
           <section className='info'>
             <h1>
-              <FaCogs /> {piece?.name}
+              <FaCogs /> {piece?.attributes.name}
             </h1>
-            <span>Categoria:{piece?.machine_model}</span>
+            <span>Categoria:{piece?.attributes.machine_model}</span>
             <hr />
             <div className='fewInfos'>
               <span>
@@ -59,7 +59,7 @@ const Piece = ({ piece }: PieceProps) => {
                 <FaTachometerAlt /> Horímetro: 0
               </span>
             </div>
-            <p>{piece?.description}</p>
+            <p>{piece?.attributes.description}</p>
           </section>
         </section>
 
@@ -168,7 +168,7 @@ const Piece = ({ piece }: PieceProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://viamaq.vercel.app/api/pieces');
+  const res = await fetch('http://localhost:1337/api/pecas?populate[0]=images');
   const piece = await res.json();
 
   const paths = piece.map((piece: Piece) => ({
@@ -181,7 +181,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(`https://viamaq.vercel.app/api/pieces/${params?.id}`);
+  const res = await fetch(
+    `http://localhost:1337/api/pecas/${params?.id}?populate[0]=images`
+  );
   const piece = (await res.json()) ?? null;
 
   return { props: { piece } };
