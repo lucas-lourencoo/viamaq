@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import { Footer } from '../components/Footer';
@@ -9,25 +9,13 @@ import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import api from '../services/axios';
 
-const Home = () => {
-  const [machines, setMachines] = useState([]);
-  const [pieces, setPieces] = useState([]);
+interface HomeProps {
+  pieces: Piece[];
+  machines: Machine[];
+}
 
-  useEffect(() => {
-    async function getData() {
-      await api.get('/machines/destaques').then((res: any) => {
-        setMachines(res.data);
-      });
-      await api
-        .get('/pieces/destaques')
-        .then((res: any) => setPieces(res.data));
-    }
-
-    getData();
-  }, []);
-
+const Home = ({ machines, pieces }: HomeProps) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -143,7 +131,7 @@ const Home = () => {
         <div className='destaques'>
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
-            {machines.map((machine: MachineInterface, index) => (
+            {machines.map((machine: Machine, index: number) => (
               <div className='card' key={index}>
                 <figure>
                   <img src={machine.image} alt='' />
@@ -214,7 +202,7 @@ const Home = () => {
         <div className='destaquesPieces'>
           <Title>Peças EM DESTAQUE</Title>
           <Slider {...settings3}>
-            {pieces.map((piece: PieceInterface, index) => (
+            {pieces.map((piece: Piece, index: number) => (
               <div className='card' key={index}>
                 <figure>
                   <img src={piece.image} alt={piece.name} />
@@ -249,3 +237,22 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const machinesResponse = await fetch(
+    'https://viamaq.vercel.app/api/machines/destaques'
+  );
+  const piecesResponse = await fetch(
+    'https://viamaq.vercel.app/api/pieces/destaques'
+  );
+
+  const machines = await machinesResponse.json();
+  const pieces = await piecesResponse.json();
+
+  return {
+    props: {
+      machines,
+      pieces,
+    },
+  };
+};

@@ -8,23 +8,12 @@ import {
 } from 'react-icons/fa';
 import Slider from 'react-slick';
 import { Footer } from '../../../components/Footer';
-import { Header } from '../../../components/Header';
 import { Paginator } from '../../../components/Paginator';
 import { Title } from '../../../styles/Title';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
 import { Container } from '../../../styles/pages/single';
-
-type Piece = {
-  id: string;
-  name: string;
-  brand: string;
-  description: string | null;
-  image: string;
-  value: string;
-  machine_model: string;
-};
 
 interface PieceProps {
   piece: Piece;

@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Footer } from '../../components/Footer';
-import { Header } from '../../components/Header';
 import { Paginator } from '../../components/Paginator';
 import api from '../../services/axios';
 import { Container } from '../../styles/pages/catalog';

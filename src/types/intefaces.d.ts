@@ -1,4 +1,4 @@
-interface MachineInterface {
+type Machine = {
   id: string;
   model: string;
   year: number;
@@ -8,9 +8,9 @@ interface MachineInterface {
   brand: string;
   description: string;
   category_id: string;
-}
+};
 
-interface PieceInterface {
+type Piece = {
   id: string;
   name: string;
   brand: string;
@@ -18,7 +18,7 @@ interface PieceInterface {
   image: string;
   value: string;
   machine_model: string;
-}
+};
 
 interface CategoryInterface {
   id: string;

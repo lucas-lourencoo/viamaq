@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
 import { Paginator } from '../components/Paginator';
 import { Container } from '../styles/pages/about';
 import { Title } from '../styles/Title';

@@ -1,26 +1,13 @@
+import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FaCalendar, FaTachometerAlt, FaTag, FaTractor } from 'react-icons/fa';
 import Slider from 'react-slick';
 import { Footer } from '../../../components/Footer';
-import { Header } from '../../../components/Header';
 import { Paginator } from '../../../components/Paginator';
 import { Container } from '../../../styles/pages/single';
 import { Title } from '../../../styles/Title';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Head from 'next/head';
-
-type Machine = {
-  id: string;
-  model: string;
-  year: number;
-  hourmeter: string;
-  image: string;
-  value: string;
-  brand: string;
-  description: string;
-  category_id: string;
-};
 
 interface MachineProps {
   machine: Machine;
