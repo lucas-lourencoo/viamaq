@@ -146,7 +146,7 @@ const Catalog: NextPage = () => {
               <div className='item'>
                 <img
                   src={
-                    'http://localhost:1337' +
+                    'https://strapi-viamaq.herokuapp.com' +
                     machine.attributes.images.data[0].attributes.url
                   }
                   alt={machine.attributes.model}
@@ -161,7 +161,7 @@ const Catalog: NextPage = () => {
                 <figure>
                   <img
                     src={
-                      'http://localhost:1337' +
+                      'https://strapi-viamaq.herokuapp.com' +
                       piece.attributes.images.data[0].attributes.url
                     }
                     alt={piece.attributes.name}

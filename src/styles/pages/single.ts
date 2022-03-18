@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-interface ContainerProps {
-  image: string;
-}
-
-export const Container = styled.main<ContainerProps>`
+export const Container = styled.main`
   background: url('/pattern.png');
   background-size: cover;
   background-position: center;
@@ -59,24 +55,20 @@ export const Container = styled.main<ContainerProps>`
       align-items: center;
       cursor: default;
 
-      @media (max-width: 720px) {
-        grid-template-columns: none;
-        grid-template-rows: 1fr 1fr;
-        gap: 2.5rem;
-        margin: 2.5rem auto;
-      }
-
-      .image {
+      img {
         opacity: 0;
         box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.25);
         animation: appearLeft 1s 0.25s forwards;
         width: 100%;
         height: 100%;
         display: block;
-        background-image: url(${(props) => props.image});
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+      }
+
+      @media (max-width: 720px) {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        gap: 2.5rem;
+        margin: 2.5rem auto;
       }
 
       .info {

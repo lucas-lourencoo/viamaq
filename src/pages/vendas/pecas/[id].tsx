@@ -32,7 +32,7 @@ const Piece = ({ piece }: PieceProps) => {
   };
 
   return (
-    <Container image={piece?.attributes.images.data[0].attributes.url}>
+    <Container>
       <Head>
         <title>Viamaq - Tratores e Peças | ${piece?.attributes.name}</title>
       </Head>
@@ -43,8 +43,13 @@ const Piece = ({ piece }: PieceProps) => {
 
       <main>
         <section className='machineGrid'>
-          <figure className='image'></figure>
-
+          <img
+            src={
+              'https://strapi-viamaq.herokuapp.com' +
+              piece?.attributes?.images.data[0].attributes.url
+            }
+            alt=''
+          />
           <section className='info'>
             <h1>
               <FaCogs /> {piece?.attributes.name}
@@ -168,7 +173,9 @@ const Piece = ({ piece }: PieceProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('http://localhost:1337/api/pecas?populate[0]=images');
+  const res = await fetch(
+    'https://strapi-viamaq.herokuapp.com/api/pecas?populate[0]=images'
+  );
   const piece = await res.json();
 
   const paths = piece.map((piece: Piece) => ({
@@ -182,7 +189,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(
-    `http://localhost:1337/api/pecas/${params?.id}?populate[0]=images`
+    `https://strapi-viamaq.herokuapp.com/api/pecas/${params?.id}?populate[0]=images`
   );
   const piece = (await res.json()) ?? null;
 

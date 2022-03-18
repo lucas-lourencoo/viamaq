@@ -134,11 +134,10 @@ const Home = ({ machines, pieces }: HomeProps) => {
           <Slider {...settings}>
             {machines.map((machine: Machine, index: number) => (
               <div className='card' key={index}>
-                {console.log(machine.attributes.images.data[0].attributes.url)}
                 <figure>
                   <img
                     src={
-                      'http://localhost:1337' +
+                      'https://strapi-viamaq.herokuapp.com' +
                       machine.attributes.images.data[0].attributes.url
                     }
                     alt=''
@@ -215,7 +214,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                 <figure>
                   <img
                     src={
-                      'http://localhost:1337' +
+                      'https://strapi-viamaq.herokuapp.com' +
                       piece.attributes.images.data[0].attributes.url
                     }
                     alt={piece.attributes.name}
@@ -254,10 +253,10 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const machinesResponse = await fetch(
-    'http://localhost:1337/api/maquinas?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/maquinas?populate[0]=images'
   );
   const piecesResponse = await fetch(
-    'http://localhost:1337/api/pecas?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/pecas?populate[0]=images'
   );
 
   const machines = await machinesResponse.json();

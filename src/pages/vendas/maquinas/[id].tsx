@@ -36,7 +36,7 @@ const Machine = ({ machine }: MachineProps) => {
   };
 
   return (
-    <Container image={machine?.attributes?.images.data[0].attributes.url}>
+    <Container>
       <Head>
         <title>Viamaq - Tratores e Peças | ${machine?.attributes.model}</title>
       </Head>
@@ -45,7 +45,13 @@ const Machine = ({ machine }: MachineProps) => {
 
       <main>
         <section className='machineGrid'>
-          <figure className='image'></figure>
+          <img
+            src={
+              'https://strapi-viamaq.herokuapp.com' +
+              machine?.attributes?.images.data[0].attributes.url
+            }
+            alt=''
+          />
 
           <section className='info'>
             <h1>
@@ -171,7 +177,7 @@ const Machine = ({ machine }: MachineProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    'http://localhost:1337/api/maquinas?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/maquinas?populate[0]=images'
   );
   const machine = await res.json();
 
@@ -186,7 +192,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `http://localhost:1337/api/maquinas/${paths?.params?.id}?populate[0]=images`
+    `https://strapi-viamaq.herokuapp.com/api/maquinas/${paths?.params?.id}?populate[0]=images`
   );
   const machine = (await res.json()) ?? null;
 
