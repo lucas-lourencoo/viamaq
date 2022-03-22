@@ -145,7 +145,7 @@ export const Container = styled.div`
 
   .destaques {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 4rem auto;
 
     @media (max-width: 720px) {
       max-width: 90%;

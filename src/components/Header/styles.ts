@@ -16,7 +16,7 @@ export const Container = styled.header<ContainerProps>`
   z-index: 50;
 
   .blueTop {
-    background: var(--blue);
+    background: #dddddd;
 
     .container {
       display: flex;
@@ -27,7 +27,7 @@ export const Container = styled.header<ContainerProps>`
       padding: 0.4rem 0;
 
       svg {
-        color: var(--principal-lighter-1);
+        color: var(--principal-darkness-2);
       }
 
       .contact {
@@ -39,8 +39,8 @@ export const Container = styled.header<ContainerProps>`
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--white);
-          font-size: 1rem;
+          color: var(--black);
+          font-size: 1.2rem;
           padding-right: 1rem;
           transition: 0.2s;
 
@@ -54,7 +54,7 @@ export const Container = styled.header<ContainerProps>`
           }
 
           svg {
-            margin-right: 1rem;
+            margin-right: 0.8rem;
           }
         }
       }
@@ -98,7 +98,7 @@ export const Container = styled.header<ContainerProps>`
     animation: appearTop 0.8s forwards;
 
     img {
-      max-width: 13rem;
+      max-width: 11rem;
     }
 
     nav {

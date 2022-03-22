@@ -66,6 +66,22 @@ const Catalog: NextPage = () => {
                   <input type='checkbox' name='category' value='case' />
                   <label htmlFor=''>Case</label>
                 </div>
+                <div className='input'>
+                  <input type='checkbox' name='category' value='case' />
+                  <label htmlFor=''>Fiatallis</label>
+                </div>
+                <div className='input'>
+                  <input type='checkbox' name='category' value='case' />
+                  <label htmlFor=''>Komatsu</label>
+                </div>
+                <div className='input'>
+                  <input type='checkbox' name='category' value='case' />
+                  <label htmlFor=''>Valtra</label>
+                </div>
+                <div className='input'>
+                  <input type='checkbox' name='category' value='case' />
+                  <label htmlFor=''>Massey Ferguson</label>
+                </div>
               </li>
               <li>
                 <h3>Valor</h3>

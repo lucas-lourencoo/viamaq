@@ -95,7 +95,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
             <h1>Máquinas, Tratores & Equipamentos</h1>
             <hr />
             <h2>
-              Todos com <span>qualidade</span> e <span>garantia</span>!
+              Todos com <span>qualidade</span> e <span>procedência</span>!
             </h2>
 
             <Link href='/vendas/catalogo'>
@@ -103,29 +103,6 @@ const Home = ({ machines, pieces }: HomeProps) => {
                 Conferir catálogo <FiArrowRight strokeWidth={3} size={30} />
               </a>
             </Link>
-          </div>
-        </div>
-
-        <div className='about'>
-          <img src='/trator.png' alt='' />
-
-          <div className='text'>
-            <Title>
-              excelência em equipamentos <span> pesados</span>!
-            </Title>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              vel sollicitudin tortor, sit amet facilisis tortor. Cras rhoncus
-              feugiat lorem ut semper. Nulla mi augue, finibus nec aliquet non,
-              sollicitudin gravida dui. Aliquam volutpat felis sit amet nisi
-              ultrices, vitae porta dui rhoncus.
-            </p>
-            <p>
-              Sed mauris mi, commodo non massa vel, molestie porta elit. Vivamus
-              auctor tincidunt ipsum nec eleifend. Quisque urna lectus,
-              malesuada non urna quis, tempor pulvinar orci. Morbi auctor dolor
-              in aliquam commodo.
-            </p>
           </div>
         </div>
 
