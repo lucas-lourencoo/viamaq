@@ -113,10 +113,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
               <div className='card' key={index}>
                 <figure>
                   <img
-                    src={
-                      'https://strapi-viamaq.herokuapp.com' +
-                      machine.attributes.images.data[0].attributes.url
-                    }
+                    src={machine.attributes.images.data[0].attributes.url}
                     alt=''
                   />
                 </figure>
@@ -190,10 +187,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
               <div className='card' key={index}>
                 <figure>
                   <img
-                    src={
-                      'https://strapi-viamaq.herokuapp.com' +
-                      piece.attributes.images.data[0].attributes.url
-                    }
+                    src={piece.attributes.images.data[0].attributes.url}
                     alt={piece.attributes.name}
                   />
                 </figure>

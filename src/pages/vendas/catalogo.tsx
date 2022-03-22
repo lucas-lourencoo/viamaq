@@ -161,10 +161,7 @@ const Catalog: NextPage = () => {
             <Link href={`/vendas/maquinas/${machine.id}`} key={machine.id}>
               <div className='item'>
                 <img
-                  src={
-                    'https://strapi-viamaq.herokuapp.com' +
-                    machine.attributes.images.data[0].attributes.url
-                  }
+                  src={machine.attributes.images.data[0].attributes.url}
                   alt={machine.attributes.model}
                 />
                 <h2>{machine.attributes.model}</h2>
@@ -176,10 +173,7 @@ const Catalog: NextPage = () => {
               <div className='item'>
                 <figure>
                   <img
-                    src={
-                      'https://strapi-viamaq.herokuapp.com' +
-                      piece.attributes.images.data[0].attributes.url
-                    }
+                    src={piece.attributes.images.data[0].attributes.url}
                     alt={piece.attributes.name}
                   />
                 </figure>

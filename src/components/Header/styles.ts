@@ -45,7 +45,7 @@ export const Container = styled.header<ContainerProps>`
           transition: 0.2s;
 
           :hover {
-            color: var(--principal-lighter-2);
+            color: var(--principal-darkness-1);
           }
 
           & + a {
