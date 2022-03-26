@@ -1,4 +1,9 @@
+import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { Footer } from '../../../components/Footer';
+import { Paginator } from '../../../components/Paginator';
+import { Title } from '../../../styles/Title';
+import { Container } from '../../../styles/pages/single';
 import {
   FaCalendar,
   FaCogs,
@@ -7,13 +12,8 @@ import {
   FaTractor,
 } from 'react-icons/fa';
 import Slider from 'react-slick';
-import { Footer } from '../../../components/Footer';
-import { Paginator } from '../../../components/Paginator';
-import { Title } from '../../../styles/Title';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Head from 'next/head';
-import { Container } from '../../../styles/pages/single';
 
 interface PieceProps {
   piece: Piece;
@@ -37,19 +37,11 @@ const Piece = ({ piece }: PieceProps) => {
         <title>Viamaq - Tratores e Peças | ${piece?.attributes.name}</title>
       </Head>
 
-      <Paginator
-        text={`Venda | Peças | ${piece?.attributes.name} - ${piece?.attributes.machine_model}`}
-      />
+      <Paginator text={`Venda | Peças | ${piece?.attributes.name}`} />
 
       <main>
         <section className='machineGrid'>
-          <img
-            src={
-              'https://strapi-viamaq.herokuapp.com' +
-              piece?.attributes?.images.data[0].attributes.url
-            }
-            alt=''
-          />
+          <img src={piece?.attributes?.images.data[0].attributes.url} alt='' />
           <section className='info'>
             <h1>
               <FaCogs /> {piece?.attributes.name}
@@ -176,11 +168,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
     'https://strapi-viamaq.herokuapp.com/api/pecas?populate[0]=images'
   );
-  const piece = await res.json();
+  const { data } = await res.json();
 
-  const paths = piece.map((piece: Piece) => ({
+  const paths = data.map((piece: Piece) => ({
     params: {
-      id: piece.id,
+      id: piece.id.toString(),
     },
   }));
 
@@ -191,9 +183,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(
     `https://strapi-viamaq.herokuapp.com/api/pecas/${params?.id}?populate[0]=images`
   );
-  const piece = (await res.json()) ?? null;
+  const { data } = (await res.json()) ?? null;
 
-  return { props: { piece } };
+  return { props: { piece: data } };
 };
 
 export default Piece;

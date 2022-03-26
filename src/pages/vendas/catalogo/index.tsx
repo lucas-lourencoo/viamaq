@@ -2,28 +2,69 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Footer } from '../../components/Footer';
-import { Paginator } from '../../components/Paginator';
-import api from '../../services/axios';
-import { Container } from '../../styles/pages/catalog';
+import { Footer } from '../../../components/Footer';
+import { Paginator } from '../../../components/Paginator';
+import api from '../../../services/axios';
+import { Container } from '../../../styles/pages/catalog';
 
 const Catalog: NextPage = () => {
   const [year, setYear] = useState(1990);
-  const [machines, setMachines] = useState([]);
-  const [pieces, setPieces] = useState([]);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    api.get('/maquinas?populate[0]=images').then((res) => {
-      setMachines(res.data.data);
-    });
-    api.get('/pecas?populate[0]=images').then((res) => {
-      console.log(res.data.data);
-      setPieces(res.data.data);
-    });
+    function getData() {
+      api.get('/maquinas?populate[0]=images').then((res) => {
+        setResults(res.data.data);
+      });
+
+      api.get('/pecas?populate[0]=images').then((res) => {
+        const oldResult: any = [...results];
+        res.data.data.map((piece: Piece) => {
+          oldResult.push({
+            ...piece,
+            attributes: { model: piece.attributes.name, ...piece.attributes },
+          });
+        });
+
+        setResults(oldResult);
+      });
+    }
+
+    getData();
+    console.log(results);
   }, []);
 
   const handleYearRange = (event: any) => {
     setYear(event.target.value);
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = {
+      category: form.category.value,
+      brand: form.brand.value,
+      direction: form.direction.value,
+      state: form.state.value,
+      model: form.model.value,
+    };
+
+    api
+      .get(
+        `/${data.category}?populate[0]=images&filters${
+          data.brand && `[brand][$eq]=${data.brand}`
+        }`
+      )
+      .then((res) => {
+        const result: any = [];
+        res.data.data.map((piece: Piece) => {
+          result.push({
+            ...piece,
+            attributes: { model: piece.attributes.name, ...piece.attributes },
+          });
+        });
+        setResults(result);
+      });
   };
 
   return (
@@ -37,49 +78,59 @@ const Catalog: NextPage = () => {
       <main>
         <section className='filter'>
           <h2>Filtrar por</h2>
-          <form action='' method='POST'>
+          <form method='GET' onSubmit={handleSubmit}>
             <ul>
               <li>
                 <h3>Categoria</h3>
 
                 <div className='input'>
-                  <input type='radio' name='category' value='machines' />
-                  <label htmlFor=''>Máquinas</label>
+                  <input
+                    type='radio'
+                    name='category'
+                    id='category'
+                    value='maquinas'
+                  />
+                  <label htmlFor='category'>Máquinas</label>
                 </div>
                 <div className='input'>
-                  <input type='radio' name='category' value='pieces' />
-                  <label htmlFor=''>Peças</label>
+                  <input
+                    type='radio'
+                    name='category'
+                    id='category'
+                    value='pecas'
+                  />
+                  <label htmlFor='category'>Peças</label>
                 </div>
               </li>
               <li>
                 <h3>Marca</h3>
 
                 <div className='input'>
-                  <input type='checkbox' name='category' value='cat' />
+                  <input type='checkbox' name='brand' value='cat' />
                   <label htmlFor=''>Caterpillar</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='john' />
+                  <input type='checkbox' name='brand' value='john' />
                   <label htmlFor=''>John Deere</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='case' />
+                  <input type='checkbox' name='brand' value='case' />
                   <label htmlFor=''>Case</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='case' />
+                  <input type='checkbox' name='brand' value='case' />
                   <label htmlFor=''>Fiatallis</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='case' />
+                  <input type='checkbox' name='brand' value='case' />
                   <label htmlFor=''>Komatsu</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='case' />
+                  <input type='checkbox' name='brand' value='case' />
                   <label htmlFor=''>Valtra</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='category' value='case' />
+                  <input type='checkbox' name='brand' value='case' />
                   <label htmlFor=''>Massey Ferguson</label>
                 </div>
               </li>
@@ -124,7 +175,7 @@ const Catalog: NextPage = () => {
 
                 <div className='input'>
                   <select name='model' id='model'>
-                    <option disabled selected>
+                    <option disabled selected value=''>
                       Selecione
                     </option>
                   </select>
@@ -135,7 +186,7 @@ const Catalog: NextPage = () => {
 
                 <div className='input'>
                   <select name='direction' id='direction'>
-                    <option disabled selected>
+                    <option disabled selected value=''>
                       Selecione
                     </option>
                   </select>
@@ -146,7 +197,7 @@ const Catalog: NextPage = () => {
 
                 <div className='input'>
                   <select name='state' id='state'>
-                    <option disabled selected>
+                    <option disabled selected value=''>
                       Selecione
                     </option>
                   </select>
@@ -157,7 +208,7 @@ const Catalog: NextPage = () => {
           </form>
         </section>
         <section className='grid'>
-          {machines.map((machine: Machine) => (
+          {results.map((machine: Machine) => (
             <Link href={`/vendas/maquinas/${machine.id}`} key={machine.id}>
               <div className='item'>
                 <img
@@ -165,21 +216,6 @@ const Catalog: NextPage = () => {
                   alt={machine.attributes.model}
                 />
                 <h2>{machine.attributes.model}</h2>
-              </div>
-            </Link>
-          ))}
-          {pieces.map((piece: Piece) => (
-            <Link href={`/vendas/pecas/${piece.id}`} key={piece.id}>
-              <div className='item'>
-                <figure>
-                  <img
-                    src={piece.attributes.images.data[0].attributes.url}
-                    alt={piece.attributes.name}
-                  />
-                </figure>
-                <h2>
-                  {piece.attributes.name} - {piece.attributes.machine_model}
-                </h2>
               </div>
             </Link>
           ))}

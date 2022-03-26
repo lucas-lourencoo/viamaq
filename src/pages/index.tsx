@@ -199,7 +199,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                     <FaTag color='var(--principal-darkness-2)' size={20} />
                     {piece.attributes.brand.toUpperCase()}
                   </p>
-                  <a href='#'>Ver Mais</a>
+                  <Link href={`/vendas/pecas/${piece.id}`}>Ver Mais</Link>
                 </div>
               </div>
             ))}

@@ -14,8 +14,8 @@ export function Footer() {
           <div className='infos'>
             <img src='/logo.svg' alt='Logo Viamaq' />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              vel sollicitudin tortor
+              Máquinas, Tratores & Equipamentos. Todos com qualidade e
+              procedência!
             </p>
           </div>
           <div className='links'>

@@ -46,10 +46,7 @@ const Machine = ({ machine }: MachineProps) => {
       <main>
         <section className='machineGrid'>
           <img
-            src={
-              'https://strapi-viamaq.herokuapp.com' +
-              machine?.attributes?.images.data[0].attributes.url
-            }
+            src={machine?.attributes?.images.data[0].attributes.url}
             alt=''
           />
 
@@ -179,9 +176,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
     'https://strapi-viamaq.herokuapp.com/api/maquinas?populate[0]=images'
   );
-  const machine = await res.json();
+  const { data } = await res.json();
 
-  const paths = machine.data.map((machine: Machine) => ({
+  const paths = data.map((machine: Machine) => ({
     params: {
       id: machine.id.toString(),
     },
@@ -194,9 +191,10 @@ export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
     `https://strapi-viamaq.herokuapp.com/api/maquinas/${paths?.params?.id}?populate[0]=images`
   );
-  const machine = (await res.json()) ?? null;
 
-  return { props: { machine: machine.data } };
+  const { data } = (await res.json()) ?? null;
+
+  return { props: { machine: data } };
 };
 
 export default Machine;

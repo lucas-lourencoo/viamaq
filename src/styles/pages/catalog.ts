@@ -7,9 +7,7 @@ export const Container = styled.main`
   background-repeat: no-repeat;
 
   main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 4rem;
+    display: flex;
     max-width: 1200px;
     margin: 5rem auto;
 
@@ -20,6 +18,9 @@ export const Container = styled.main`
     }
 
     .filter {
+      width: 25%;
+      margin-right: 3rem;
+
       @keyframes fromLeft {
         from {
           transform: translateX(-1rem);
@@ -57,7 +58,7 @@ export const Container = styled.main`
           color: var(--white);
           font-size: 1rem;
           width: 100%;
-          margin-top: 2rem;
+          margin: 2rem 0;
           padding: 0.8rem 0;
           border-radius: 5px;
           transition: 0.3s;
@@ -113,9 +114,9 @@ export const Container = styled.main`
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1.5rem;
+      flex: 1;
       animation: fromRight 1s forwards;
 
       @media (max-width: 720px) {
