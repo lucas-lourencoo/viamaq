@@ -31,7 +31,6 @@ const Catalog: NextPage = () => {
     }
 
     getData();
-    console.log(results);
   }, []);
 
   const handleYearRange = (event: any) => {

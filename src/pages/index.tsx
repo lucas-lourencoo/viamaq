@@ -16,7 +16,6 @@ interface HomeProps {
 }
 
 const Home = ({ machines, pieces }: HomeProps) => {
-  console.log(pieces);
   const settings = {
     dots: false,
     infinite: true,

@@ -14,7 +14,6 @@ interface MachineProps {
 }
 
 const Machine = ({ machine }: MachineProps) => {
-  console.log(machine);
   const settings = {
     dots: false,
     infinite: true,
