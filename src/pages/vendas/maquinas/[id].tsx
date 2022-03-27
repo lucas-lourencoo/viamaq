@@ -10,7 +10,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 interface MachineProps {
-  machine: Machine;
+  machine: Product;
 }
 
 const Machine = ({ machine }: MachineProps) => {
@@ -37,10 +37,10 @@ const Machine = ({ machine }: MachineProps) => {
   return (
     <Container>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${machine?.attributes.model}</title>
+        <title>Viamaq - Tratores e Peças | ${machine?.attributes.name}</title>
       </Head>
 
-      <Paginator text={`Venda | Máquinas | ${machine?.attributes.model}`} />
+      <Paginator text={`Venda | Máquinas | ${machine?.attributes.name}`} />
 
       <main>
         <section className='machineGrid'>
@@ -51,7 +51,7 @@ const Machine = ({ machine }: MachineProps) => {
 
           <section className='info'>
             <h1>
-              <FaTractor /> {machine?.attributes.model}
+              <FaTractor /> {machine?.attributes.name}
             </h1>
             <span>Categoria: Compactadores combinados</span>
             <hr />
@@ -173,13 +173,13 @@ const Machine = ({ machine }: MachineProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/maquinas?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images'
   );
   const { data } = await res.json();
 
-  const paths = data.map((machine: Machine) => ({
+  const paths = data.map((product: Product) => ({
     params: {
-      id: machine.id.toString(),
+      id: product.id.toString(),
     },
   }));
 
@@ -188,7 +188,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (paths) => {
   const res = await fetch(
-    `https://strapi-viamaq.herokuapp.com/api/maquinas/${paths?.params?.id}?populate[0]=images`
+    `https://strapi-viamaq.herokuapp.com/api/produtos/${paths?.params?.id}?populate[0]=images`
   );
 
   const { data } = (await res.json()) ?? null;

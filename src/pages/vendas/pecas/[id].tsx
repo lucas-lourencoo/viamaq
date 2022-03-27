@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 interface PieceProps {
-  piece: Piece;
+  piece: Product;
 }
 
 const Piece = ({ piece }: PieceProps) => {
@@ -46,7 +46,7 @@ const Piece = ({ piece }: PieceProps) => {
             <h1>
               <FaCogs /> {piece?.attributes.name}
             </h1>
-            <span>Categoria:{piece?.attributes.machine_model}</span>
+            {/* <span>Categoria:{piece?.attributes.machine_model}</span> */}
             <hr />
             <div className='fewInfos'>
               <span>
@@ -166,11 +166,11 @@ const Piece = ({ piece }: PieceProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/pecas?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images'
   );
   const { data } = await res.json();
 
-  const paths = data.map((piece: Piece) => ({
+  const paths = data.map((piece: Product) => ({
     params: {
       id: piece.id.toString(),
     },
@@ -181,7 +181,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(
-    `https://strapi-viamaq.herokuapp.com/api/pecas/${params?.id}?populate[0]=images`
+    `https://strapi-viamaq.herokuapp.com/api/produtos/${params?.id}?populate[0]=images`
   );
   const { data } = (await res.json()) ?? null;
 
