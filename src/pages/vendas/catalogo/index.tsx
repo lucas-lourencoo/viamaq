@@ -4,33 +4,17 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Footer } from '../../../components/Footer';
 import { Paginator } from '../../../components/Paginator';
-import api from '../../../services/axios';
 import { Container } from '../../../styles/pages/catalog';
+import api from '../../../services/axios';
 
 const Catalog: NextPage = () => {
   const [year, setYear] = useState(1990);
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    function getData() {
-      api.get('/maquinas?populate[0]=images').then((res) => {
-        setResults(res.data.data);
-      });
-
-      api.get('/pecas?populate[0]=images').then((res) => {
-        const oldResult: any = [...results];
-        res.data.data.map((piece: Piece) => {
-          oldResult.push({
-            ...piece,
-            attributes: { model: piece.attributes.name, ...piece.attributes },
-          });
-        });
-
-        setResults(oldResult);
-      });
-    }
-
-    getData();
+    api.get('/produtos?populate[0]=images').then((res) => {
+      setResults(res.data.data);
+    });
   }, []);
 
   const handleYearRange = (event: any) => {
@@ -48,22 +32,16 @@ const Catalog: NextPage = () => {
       model: form.model.value,
     };
 
-    api
-      .get(
-        `/${data.category}?populate[0]=images&filters${
-          data.brand && `[brand][$eq]=${data.brand}`
-        }`
-      )
-      .then((res) => {
-        const result: any = [];
-        res.data.data.map((piece: Piece) => {
-          result.push({
-            ...piece,
-            attributes: { model: piece.attributes.name, ...piece.attributes },
-          });
-        });
-        setResults(result);
-      });
+    let query = '/produtos?populate[0]=images&filters';
+
+    if (!!data.brand) query.concat(`[brand][$eq]=${data.brand}`);
+    if (!!data.category)
+      query = query.concat(`[category][$eq]=${data.category}`);
+    // if (!!data.direction) query = `/${data.direction}`;
+
+    api.get(query).then((res) => {
+      setResults(res.data.data);
+    });
   };
 
   return (
@@ -87,7 +65,7 @@ const Catalog: NextPage = () => {
                     type='radio'
                     name='category'
                     id='category'
-                    value='maquinas'
+                    value='Máquinas'
                   />
                   <label htmlFor='category'>Máquinas</label>
                 </div>
@@ -96,7 +74,7 @@ const Catalog: NextPage = () => {
                     type='radio'
                     name='category'
                     id='category'
-                    value='pecas'
+                    value='Peças'
                   />
                   <label htmlFor='category'>Peças</label>
                 </div>
@@ -207,14 +185,14 @@ const Catalog: NextPage = () => {
           </form>
         </section>
         <section className='grid'>
-          {results.map((machine: Machine) => (
+          {results.map((machine: Product) => (
             <Link href={`/vendas/maquinas/${machine.id}`} key={machine.id}>
               <div className='item'>
                 <img
                   src={machine.attributes.images.data[0].attributes.url}
-                  alt={machine.attributes.model}
+                  alt={machine.attributes.name}
                 />
-                <h2>{machine.attributes.model}</h2>
+                <h2>{machine.attributes.name}</h2>
               </div>
             </Link>
           ))}

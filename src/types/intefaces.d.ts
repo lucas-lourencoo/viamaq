@@ -1,31 +1,9 @@
-type Machine = {
-  id: number;
-  attributes: {
-    model: string;
-    year: number;
-    hourmeter: string;
-    images: {
-      data: [
-        {
-          attributes: {
-            url: string;
-          };
-        }
-      ];
-    };
-    value: string;
-    brand: string;
-    description: string;
-    category_id: string;
-  };
-};
-
-type Piece = {
+type Product = {
   id: number;
   attributes: {
     name: string;
-    brand: string;
-    description: string;
+    year: number;
+    hourmeter?: string;
     images: {
       data: [
         {
@@ -36,7 +14,9 @@ type Piece = {
       ];
     };
     value: string;
-    machine_model: string;
+    brand: string;
+    description: string;
+    category: string;
   };
 };
 

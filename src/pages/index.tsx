@@ -11,8 +11,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 interface HomeProps {
-  pieces: Piece[];
-  machines: Machine[];
+  machines: Product[];
+  pieces: Product[];
 }
 
 const Home = ({ machines, pieces }: HomeProps) => {
@@ -108,7 +108,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
         <div className='destaques'>
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
-            {machines.map((machine: Machine, index: number) => (
+            {machines.map((machine: Product, index: number) => (
               <div className='card' key={index}>
                 <figure>
                   <img
@@ -118,11 +118,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                 </figure>
 
                 <div className='infos'>
-                  <h3>{machine.attributes.model}</h3>
-                  <p>
-                    <FaTag color='var(--principal-darkness-2)' /> Compactadores
-                    Combinados (CIL / PNEUS)
-                  </p>
+                  <h3>{machine.attributes.name}</h3>
                   <p>
                     <FaTractor color='var(--principal-darkness-2)' />
                     {machine.attributes.brand}
@@ -182,7 +178,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
         <div className='destaquesPieces'>
           <Title>Peças EM DESTAQUE</Title>
           <Slider {...settings3}>
-            {pieces.map((piece: Piece, index: number) => (
+            {pieces.map((piece: Product, index: number) => (
               <div className='card' key={index}>
                 <figure>
                   <img
@@ -191,9 +187,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                   />
                 </figure>
                 <div className='infos'>
-                  <h3>
-                    {piece.attributes.name} - {piece.attributes.machine_model}
-                  </h3>
+                  <h3>{piece.attributes.name}</h3>
                   <p>
                     <FaTag color='var(--principal-darkness-2)' size={20} />
                     {piece.attributes.brand.toUpperCase()}
@@ -222,20 +216,24 @@ const Home = ({ machines, pieces }: HomeProps) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const machinesResponse = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/maquinas?populate[0]=images'
-  );
-  const piecesResponse = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/pecas?populate[0]=images'
+  const response = await fetch(
+    'https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images'
   );
 
-  const machines = await machinesResponse.json();
-  const pieces = await piecesResponse.json();
+  const { data } = await response.json();
+
+  const machines = await data.filter(
+    (product: Product) => product.attributes.category === 'Máquinas' && product
+  );
+
+  const pieces = await data.filter(
+    (product: Product) => product.attributes.category === 'Peças' && product
+  );
 
   return {
     props: {
-      machines: machines.data,
-      pieces: pieces.data,
+      machines: machines,
+      pieces: pieces,
     },
   };
 };
