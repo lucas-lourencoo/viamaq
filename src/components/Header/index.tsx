@@ -32,8 +32,11 @@ export function Header() {
             <a href='#'>
               <FiMail size={24} /> viamaq@viamaqtratores.com.br
             </a>
-            <a href='#'>
-              <FaWhatsapp size={24} /> (67) 99861-2017
+            <a
+              href='https://api.whatsapp.com/send?phone=5567998319814&text=https://api.whatsapp.com/send?phone=5567998319814&text=Ol%C3%A1,%20gostaria%20de%20comprar%20uma%20m%C3%A1quina/pe%C3%A7a!'
+              target='_blank'
+            >
+              <FaWhatsapp size={24} /> (67) 99831-9814
             </a>
           </div>
           <div className='social'>
@@ -93,11 +96,11 @@ export function Header() {
                 <a>Série de máquinas</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href='/buscar'>
                 <a>Buscar máquinas</a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href='/contato'>
                 <a>Contato</a>

@@ -26,21 +26,34 @@ const Catalog: NextPage = () => {
     const form = event.target;
     const data = {
       category: form.category.value,
-      brand: form.brand.value,
-      direction: form.direction.value,
-      state: form.state.value,
-      model: form.model.value,
+      brandCat: form.brandCat.checked && form.brandCat.value,
+      brandCase: form.brandCase.checked && form.brandCase.value,
+      brandJonh: form.brandJonh.checked && form.brandJonh.value,
+      brandFia: form.brandFia.checked && form.brandFia.value,
+      brandKomatsu: form.brandKomatsu.checked && form.brandKomatsu.value,
+      brandValtra: form.brandValtra.checked && form.brandValtra.value,
+      brandMassey: form.brandMassey.checked && form.brandMassey.value,
+      // direction: form.direction.value,
+      // state: form.state.value,
+      // model: form.model.value,
     };
 
-    let query = '/produtos?populate[0]=images&filters';
+    let query = `/produtos?populate[0]=images&filters[category][$eq]=${data.category}`;
 
-    if (!!data.brand) query.concat(`[brand][$eq]=${data.brand}`);
-    if (!!data.category)
-      query = query.concat(`[category][$eq]=${data.category}`);
-    // if (!!data.direction) query = `/${data.direction}`;
+    if (!!data.brandCat)
+      query = query.concat(`&[brand][$eq]=${data.brandCat.toUpperCase()}`);
+    if (!!data.brandCase)
+      query = query.concat(`&[brand][$eq]=${data.brandCase.toLowerCase()}`);
+    if (!!data.brandJonh)
+      query = query.concat(`&[brand][$eq]=${data.brandJonh}`);
+    if (!!data.brandFia) query = query.concat(`&[brand][$eq]=${data.brandFia}`);
+    if (!!data.brandValtra)
+      query = query.concat(`&[brand][$eq]=${data.brandValtra}`);
+    if (!!data.brandMassey)
+      query = query.concat(`&[brand][$eq]=${data.brandMassey}`);
 
-    api.get(query).then((res) => {
-      setResults(res.data.data);
+    api.get(query).then(({ data }) => {
+      setResults(data.data);
     });
   };
 
@@ -81,33 +94,36 @@ const Catalog: NextPage = () => {
               </li>
               <li>
                 <h3>Marca</h3>
-
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='cat' />
+                  <input type='checkbox' name='brandCat' value='Caterpillar' />
                   <label htmlFor=''>Caterpillar</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='john' />
+                  <input type='checkbox' name='brandJonh' value='John Deere' />
                   <label htmlFor=''>John Deere</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='case' />
+                  <input type='checkbox' name='brandCase' value='Case' />
                   <label htmlFor=''>Case</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='case' />
+                  <input type='checkbox' name='brandFia' value='Fiatallis' />
                   <label htmlFor=''>Fiatallis</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='case' />
+                  <input type='checkbox' name='brandKomatsu' value='Komatsu' />
                   <label htmlFor=''>Komatsu</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='case' />
+                  <input type='checkbox' name='brandValtra' value='Valtra' />
                   <label htmlFor=''>Valtra</label>
                 </div>
                 <div className='input'>
-                  <input type='checkbox' name='brand' value='case' />
+                  <input
+                    type='checkbox'
+                    name='brandMassey'
+                    value='Massey Ferguson'
+                  />
                   <label htmlFor=''>Massey Ferguson</label>
                 </div>
               </li>
@@ -147,7 +163,7 @@ const Catalog: NextPage = () => {
                   <label htmlFor='year'>Ano: 1990 - {year}</label>
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <h3>Modelo</h3>
 
                 <div className='input'>
@@ -179,7 +195,7 @@ const Catalog: NextPage = () => {
                     </option>
                   </select>
                 </div>
-              </li>
+              </li> */}
             </ul>
             <button>Filtrar</button>
           </form>

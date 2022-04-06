@@ -7,9 +7,11 @@ export const Container = styled.main`
   background-repeat: no-repeat;
 
   main {
-    display: flex;
+    display: grid;
     max-width: 1200px;
     margin: 5rem auto;
+    gap: 2rem;
+    grid-template-columns: 25% 75%;
 
     @media (max-width: 720px) {
       grid-template-columns: none;
@@ -18,8 +20,10 @@ export const Container = styled.main`
     }
 
     .filter {
-      width: 25%;
+      width: 100%;
       margin-right: 3rem;
+      max-height: 680px;
+      height: 100%;
 
       @keyframes fromLeft {
         from {
@@ -116,8 +120,8 @@ export const Container = styled.main`
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1.5rem;
-      flex: 1;
       animation: fromRight 1s forwards;
+      height: auto;
 
       @media (max-width: 720px) {
         grid-template-columns: none;
@@ -131,6 +135,7 @@ export const Container = styled.main`
         overflow: hidden;
         transition: 0.3s;
         cursor: pointer;
+        max-height: 20rem;
 
         :hover {
           transform: scale(1.025);
