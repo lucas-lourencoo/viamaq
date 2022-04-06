@@ -146,6 +146,7 @@ export const Container = styled.main`
         justify-self: center;
         border-radius: 7px;
         position: relative;
+        background: var(--white);
 
         img {
           width: 100%;

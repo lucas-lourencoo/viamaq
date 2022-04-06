@@ -13,7 +13,7 @@ type Product = {
         }
       ];
     };
-    value: string;
+    value: number;
     brand: string;
     description: string;
     category: string;

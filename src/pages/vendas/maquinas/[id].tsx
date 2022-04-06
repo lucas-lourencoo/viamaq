@@ -1,6 +1,12 @@
 import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { FaCalendar, FaTachometerAlt, FaTag, FaTractor } from 'react-icons/fa';
+import {
+  FaCalendar,
+  FaDollarSign,
+  FaTachometerAlt,
+  FaTag,
+  FaTractor,
+} from 'react-icons/fa';
 import Slider from 'react-slick';
 import { Footer } from '../../../components/Footer';
 import { Paginator } from '../../../components/Paginator';
@@ -37,7 +43,7 @@ const Machine = ({ machine }: MachineProps) => {
   return (
     <Container>
       <Head>
-        <title>Viamaq - Tratores e Peças | ${machine?.attributes.name}</title>
+        <title>Viamaq - Tratores e Peças | {machine?.attributes.name}</title>
       </Head>
 
       <Paginator text={`Venda | Máquinas | ${machine?.attributes.name}`} />
@@ -46,14 +52,14 @@ const Machine = ({ machine }: MachineProps) => {
         <section className='machineGrid'>
           <img
             src={machine?.attributes?.images.data[0].attributes.url}
-            alt=''
+            alt={machine?.attributes.name}
           />
 
           <section className='info'>
             <h1>
               <FaTractor /> {machine?.attributes.name}
             </h1>
-            <span>Categoria: Compactadores combinados</span>
+            <span>Marca: {machine?.attributes.brand.toUpperCase()}</span>
             <hr />
             <div className='fewInfos'>
               <span>
@@ -61,6 +67,13 @@ const Machine = ({ machine }: MachineProps) => {
               </span>
               <span>
                 <FaTachometerAlt /> Horímetro: {machine?.attributes.hourmeter}
+              </span>
+              <span>
+                <FaDollarSign /> Valor:{' '}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }).format(machine?.attributes.value)}
               </span>
             </div>
             <p>{machine?.attributes.description}</p>

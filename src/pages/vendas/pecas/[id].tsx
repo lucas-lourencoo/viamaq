@@ -7,6 +7,7 @@ import { Container } from '../../../styles/pages/single';
 import {
   FaCalendar,
   FaCogs,
+  FaDollarSign,
   FaTachometerAlt,
   FaTag,
   FaTractor,
@@ -46,7 +47,7 @@ const Piece = ({ piece }: PieceProps) => {
             <h1>
               <FaCogs /> {piece?.attributes.name}
             </h1>
-            {/* <span>Categoria:{piece?.attributes.machine_model}</span> */}
+            <span>Marca: {piece?.attributes.brand.toUpperCase()}</span>
             <hr />
             <div className='fewInfos'>
               <span>
@@ -54,6 +55,13 @@ const Piece = ({ piece }: PieceProps) => {
               </span>
               <span>
                 <FaTachometerAlt /> Horímetro: 0
+              </span>
+              <span>
+                <FaDollarSign /> Valor:{' '}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }).format(piece?.attributes.value)}
               </span>
             </div>
             <p>{piece?.attributes.description}</p>

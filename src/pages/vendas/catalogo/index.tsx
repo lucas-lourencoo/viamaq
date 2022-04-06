@@ -201,14 +201,14 @@ const Catalog: NextPage = () => {
           </form>
         </section>
         <section className='grid'>
-          {results.map((machine: Product) => (
-            <Link href={`/vendas/maquinas/${machine.id}`} key={machine.id}>
+          {results.map((product: Product) => (
+            <Link href={`/vendas/produtos/${product.id}`} key={product.id}>
               <div className='item'>
                 <img
-                  src={machine.attributes.images.data[0].attributes.url}
-                  alt={machine.attributes.name}
+                  src={product.attributes.images.data[0].attributes.url}
+                  alt={product.attributes.name}
                 />
-                <h2>{machine.attributes.name}</h2>
+                <h2>{product.attributes.name}</h2>
               </div>
             </Link>
           ))}
