@@ -118,6 +118,11 @@ export const Container = styled.header<ContainerProps>`
           height: 100%;
           cursor: pointer;
 
+          &:last-child {
+            border: none;
+            padding: 0.5rem;
+          }
+
           &:hover .subMenu {
             display: inline-block;
           }

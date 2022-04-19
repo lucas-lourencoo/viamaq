@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Container } from './styles';
-import { FiMail, FiPhone, FiPlus, FiSearch } from 'react-icons/fi';
+import { FiMail, FiPhone, FiSearch } from 'react-icons/fi';
 import { FaFacebookSquare, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
@@ -74,22 +74,14 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <a>
-                Venda
-                <FiPlus size={14} strokeWidth={3} color='var(--principal)' />
-              </a>
-              <ul className='subMenu'>
-                <li>
-                  <Link href='/vendas/catalogo'>
-                    <a>Máquinas</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href='/vendas/catalogo'>
-                    <a>Peças</a>
-                  </Link>
-                </li>
-              </ul>
+              <Link href='/vendas/catalogo?category=Máquinas'>
+                <a>Venda de Máquinas</a>
+              </Link>
+            </li>
+            <li>
+              <Link href='/vendas/catalogo?category=Peças'>
+                <a>Venda de Peças</a>
+              </Link>
             </li>
             <li>
               <Link href='/series'>

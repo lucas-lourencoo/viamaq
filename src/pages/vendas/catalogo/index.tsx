@@ -6,19 +6,39 @@ import { Footer } from '../../../components/Footer';
 import { Paginator } from '../../../components/Paginator';
 import { Container } from '../../../styles/pages/catalog';
 import api from '../../../services/axios';
+import { useRouter } from 'next/router';
 
 const Catalog: NextPage = () => {
-  const [year, setYear] = useState(1990);
+  const [year, setYear] = useState(2021);
+  const [value, setValue] = useState(300000);
   const [results, setResults] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
-    api.get('/produtos?populate[0]=images').then((res) => {
-      setResults(res.data.data);
-    });
-  }, []);
+    api
+      .get(
+        `/produtos?populate[0]=images&filters[category][$eq]=${router.query.category}`
+      )
+      .then(({ data }) => {
+        setResults(data.data);
+      });
+  }, [router.query]);
 
   const handleYearRange = (event: any) => {
     setYear(event.target.value);
+  };
+
+  const handleValue = (event: any) => {
+    setValue(event.target.value);
+  };
+
+  const changeCategory = (event: any) => {
+    router.push({
+      pathname: '/vendas/catalogo',
+      query: {
+        category: event.target.value,
+      },
+    });
   };
 
   const handleSubmit = (event: any) => {
@@ -38,7 +58,7 @@ const Catalog: NextPage = () => {
       // model: form.model.value,
     };
 
-    let query = `/produtos?populate[0]=images&filters[category][$eq]=${data.category}`;
+    let query = `/produtos?populate[0]=images&filters[category][$eq]=${router.query.category}`;
 
     if (!!data.brandCat)
       query = query.concat(`&[brand][$eq]=${data.brandCat.toUpperCase()}`);
@@ -52,6 +72,9 @@ const Catalog: NextPage = () => {
     if (!!data.brandMassey)
       query = query.concat(`&[brand][$eq]=${data.brandMassey}`);
 
+    query = query.concat(`&[value][$lte]=${value}&[year][$lte]=${year}`);
+
+    console.log(query);
     api.get(query).then(({ data }) => {
       setResults(data.data);
     });
@@ -79,6 +102,7 @@ const Catalog: NextPage = () => {
                     name='category'
                     id='category'
                     value='Máquinas'
+                    onChange={changeCategory}
                   />
                   <label htmlFor='category'>Máquinas</label>
                 </div>
@@ -88,6 +112,7 @@ const Catalog: NextPage = () => {
                     name='category'
                     id='category'
                     value='Peças'
+                    onChange={changeCategory}
                   />
                   <label htmlFor='category'>Peças</label>
                 </div>
@@ -130,21 +155,23 @@ const Catalog: NextPage = () => {
               <li>
                 <h3>Valor</h3>
 
-                <div className='input'>
-                  <input type='range' name='value' list='tickmarks' />
-                  <datalist id='tickmarks'>
-                    <option value='0' label='0%' />
-                    <option value='10' />
-                    <option value='20' />
-                    <option value='30' />
-                    <option value='40' />
-                    <option value='50' label='50%' />
-                    <option value='60' />
-                    <option value='70' />
-                    <option value='80' />
-                    <option value='90' />
-                    <option value='100' label='100%' />
-                  </datalist>
+                <div className='inputRange'>
+                  <input
+                    type='range'
+                    name='value'
+                    defaultValue={value}
+                    onChange={handleValue}
+                    min='0'
+                    max={300000}
+                    step={10000}
+                  />
+                  <label htmlFor='value'>
+                    Valor:{' < '}
+                    {Intl.NumberFormat('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    }).format(value)}
+                  </label>
                 </div>
               </li>
               <li>
@@ -154,11 +181,11 @@ const Catalog: NextPage = () => {
                   <input
                     type='range'
                     name='year'
-                    list='tickmarks'
                     min='1990'
                     max='2021'
                     onChange={handleYearRange}
                     id='year'
+                    defaultValue={year}
                   />
                   <label htmlFor='year'>Ano: 1990 - {year}</label>
                 </div>

@@ -14,8 +14,7 @@ export function Footer() {
           <div className='infos'>
             <img src='/logo.svg' alt='Logo Viamaq' />
             <p>
-              Máquinas, Tratores & Equipamentos. Todos com qualidade e
-              procedência!
+              Máquinas, Tratores & Peças. Todos com qualidade e procedência!
             </p>
           </div>
           <div className='links'>
@@ -84,8 +83,8 @@ export function Footer() {
                   href='https://goo.gl/maps/rJYCeE5McY11QwtJ6'
                   target='__blank'
                 >
-                  <FaHome size={24} /> Av coronel Antonino, 5857 - Jardim
-                  Montevidéu. CEP: 79035-000
+                  <FaHome size={24} /> Av. Cel. Antonino, 5857 - Coronel
+                  Antonino. CEP: 79062-200
                 </a>
               </li>
             </ul>

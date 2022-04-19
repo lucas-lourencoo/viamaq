@@ -116,11 +116,6 @@ export default function HeaderCellphone() {
               </Link>
             </NavItem>
             <NavItem onClick={closeModal}>
-              <Link href='/buscar'>
-                <a>Buscar máquinas</a>
-              </Link>
-            </NavItem>
-            <NavItem onClick={closeModal}>
               <Link href='/contato'>
                 <a>Contato</a>
               </Link>
