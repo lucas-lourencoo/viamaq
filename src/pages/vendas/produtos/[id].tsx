@@ -74,7 +74,7 @@ const Products = ({ product, destaques }: PieceProps) => {
         <section className='destaques'>
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
-            {destaques.map((destaque) => (
+            {destaques?.map((destaque) => (
               <div className='card'>
                 <img
                   src={destaque?.attributes?.images.data[0].attributes.url}
@@ -113,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
   const { data } = await res.json();
 
-  const paths = data.map((piece: Product) => ({
+  const paths = data?.map((piece: Product) => ({
     params: {
       id: piece.id.toString(),
     },
