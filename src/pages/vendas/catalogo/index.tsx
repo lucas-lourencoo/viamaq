@@ -17,7 +17,7 @@ const Catalog: NextPage = () => {
   useEffect(() => {
     api
       .get(
-        `/produtos?populate[0]=images&filters[category][$eq]=${router.query.category}`
+        `/produtos?populate=%2A&filters[category][$eq]=${router.query.category}`
       )
       .then(({ data }) => {
         setResults(data.data);
@@ -58,7 +58,7 @@ const Catalog: NextPage = () => {
       // model: form.model.value,
     };
 
-    let query = `/produtos?populate[0]=images&filters[category][$eq]=${router.query.category}`;
+    let query = `/produtos?populate=%2A&filters[category][$eq]=${router.query.category}`;
 
     if (!!data.brandCat)
       query = query.concat(`&[brand][$eq]=${data.brandCat.toUpperCase()}`);

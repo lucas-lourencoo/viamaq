@@ -109,7 +109,7 @@ const Products = ({ product, destaques }: PieceProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
   );
   const { data } = await res.json();
 
@@ -124,12 +124,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(
-    `https://strapi-viamaq.herokuapp.com/api/produtos/${params?.id}?populate[0]=images`
+    `https://strapi-viamaq.herokuapp.com/api/produtos/${params?.id}?populate=%2A`
   );
   const { data } = (await res.json()) ?? null;
 
   const resDestaques = await fetch(
-    `https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images&[filters][category][$eq]=${data.attributes.category}`
+    `https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A&[filters][category][$eq]=${data.attributes.category}`
   );
   const dataDestaque = (await resDestaques.json()) ?? null;
 
