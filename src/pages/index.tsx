@@ -131,7 +131,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                     <FaTachometerAlt color='var(--principal-darkness-2)' />
                     Horimetro: {machine.attributes.hourmeter}
                   </p>
-                  <Link href={`/vendas/maquinas/${machine.id}`} passHref>
+                  <Link href={`/vendas/produtos/${machine.id}`} passHref>
                     <a href=''>Ver Mais</a>
                   </Link>
                 </div>
@@ -192,7 +192,7 @@ const Home = ({ machines, pieces }: HomeProps) => {
                     <FaTag color='var(--principal-darkness-2)' size={20} />
                     {piece.attributes.brand.toUpperCase()}
                   </p>
-                  <Link href={`/vendas/pecas/${piece.id}`}>Ver Mais</Link>
+                  <Link href={`/vendas/produtos/${piece.id}`}>Ver Mais</Link>
                 </div>
               </div>
             ))}
