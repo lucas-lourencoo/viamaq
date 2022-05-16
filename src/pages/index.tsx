@@ -219,7 +219,7 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/produtos?populate[0]=images'
+    'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
   );
 
   const { data } = await response.json();
