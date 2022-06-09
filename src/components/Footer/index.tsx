@@ -71,11 +71,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href='https://goo.gl/maps/rJYCeE5McY11QwtJ6'
+                  href='https://goo.gl/maps/jekHHpN4ou3pExTB7'
                   target='__blank'
                 >
-                  <FaHome size={24} /> Av. Cel. Antonino, 5857 - Coronel
-                  Antonino. CEP: 79062-200
+                  <FaHome size={24} /> Av. Cel. Antonino, 5857 - Bairro JD
+                  Montevidéu. | Campo Grande/MS - CEP: 79035-000
                 </a>
               </li>
             </ul>
