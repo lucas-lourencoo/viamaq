@@ -164,6 +164,8 @@ export const Container = styled.div`
         width: 100%;
         overflow: hidden;
         max-height: 14rem;
+        display: flex;
+        align-items: center;
 
         img {
           width: 100%;
@@ -259,6 +261,8 @@ export const Container = styled.div`
         width: 100%;
         overflow: hidden;
         max-height: 14rem;
+        display: flex;
+        align-items: center;
 
         img {
           width: 100%;

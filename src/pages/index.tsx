@@ -9,13 +9,17 @@ import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
 
 interface HomeProps {
   machines: Product[];
   pieces: Product[];
 }
 
-const Home = ({ machines, pieces }: HomeProps) => {
+const Home = () => {
+  const [machines, setMachines] = useState([] as Product[]);
+  const [pieces, setPieces] = useState([] as Product[]);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -81,6 +85,30 @@ const Home = ({ machines, pieces }: HomeProps) => {
       },
     ],
   };
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
+      );
+
+      const { data } = await response.json();
+
+      const machines = await data.filter(
+        (product: Product) =>
+          product.attributes.category === 'Máquinas' && product
+      );
+
+      const pieces = await data.filter(
+        (product: Product) => product.attributes.category === 'Peças' && product
+      );
+
+      setMachines(machines);
+      setPieces(pieces);
+    }
+
+    getData();
+  }, []);
 
   return (
     <Container>
@@ -216,26 +244,3 @@ const Home = ({ machines, pieces }: HomeProps) => {
 };
 
 export default Home;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await fetch(
-    'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
-  );
-
-  const { data } = await response.json();
-
-  const machines = await data.filter(
-    (product: Product) => product.attributes.category === 'Máquinas' && product
-  );
-
-  const pieces = await data.filter(
-    (product: Product) => product.attributes.category === 'Peças' && product
-  );
-
-  return {
-    props: {
-      machines: machines,
-      pieces: pieces,
-    },
-  };
-};

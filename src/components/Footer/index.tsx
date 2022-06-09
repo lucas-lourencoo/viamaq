@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   FaChevronRight,
   FaFacebookSquare,
@@ -21,40 +22,30 @@ export function Footer() {
             <h4>Links úteis</h4>
             <ul>
               <li>
-                <FaChevronRight /> Lorem ipsum
+                <Link href='sobre'>
+                  <a>
+                    <FaChevronRight /> Sobre nós
+                  </a>
+                </Link>
               </li>
               <li>
-                <FaChevronRight />
-                Lorem ipsum
+                <Link href='/vendas/catalogo?category=Máquinas'>
+                  <a>
+                    <FaChevronRight /> Nosso Catálogo
+                  </a>
+                </Link>
               </li>
               <li>
-                <FaChevronRight />
-                Lorem ipsum
+                <Link href='/contato'>
+                  <a>
+                    <FaChevronRight /> Contato
+                  </a>
+                </Link>
               </li>
               <li>
-                <FaChevronRight />
-                Lorem ipsum
-              </li>
-            </ul>
-          </div>
-          <div className='links'>
-            <h4>Links úteis</h4>
-            <ul>
-              <li>
-                <FaChevronRight />
-                Lorem ipsum
-              </li>
-              <li>
-                <FaChevronRight />
-                Lorem ipsum
-              </li>
-              <li>
-                <FaChevronRight />
-                Lorem ipsum
-              </li>
-              <li>
-                <FaChevronRight />
-                Lorem ipsum
+                <a href='https://api.whatsapp.com/send?phone=5567998319814&text=https://api.whatsapp.com/send?phone=5567998319814&text=Ol%C3%A1,%20gostaria%20de%20comprar%20uma%20m%C3%A1quina/pe%C3%A7a!'>
+                  <FaChevronRight /> Whatsapp
+                </a>
               </li>
             </ul>
           </div>
