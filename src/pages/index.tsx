@@ -21,7 +21,7 @@ const Home = () => {
   const [pieces, setPieces] = useState([] as Product[]);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -29,6 +29,7 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    centerMode: true,
     responsive: [
       {
         breakpoint: 720,
@@ -64,7 +65,7 @@ const Home = () => {
   };
 
   const settings3 = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     speed: 700,
@@ -73,6 +74,7 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: false,
+    centerMode: true,
     responsive: [
       {
         breakpoint: 720,

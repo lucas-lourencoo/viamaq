@@ -163,7 +163,7 @@ export const Container = styled.div`
       figure {
         width: 100%;
         overflow: hidden;
-        max-height: 14rem;
+        height: 14rem;
         display: flex;
         align-items: center;
 
@@ -260,7 +260,7 @@ export const Container = styled.div`
       figure {
         width: 100%;
         overflow: hidden;
-        max-height: 14rem;
+        height: 13rem;
         display: flex;
         align-items: center;
 

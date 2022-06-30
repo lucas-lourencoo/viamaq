@@ -116,6 +116,26 @@ const Catalog: NextPage = () => {
                   />
                   <label htmlFor='category'>Peças</label>
                 </div>
+                <div className='input'>
+                  <input
+                    type='radio'
+                    name='category'
+                    id='category'
+                    value='Caminhão'
+                    onChange={changeCategory}
+                  />
+                  <label htmlFor='category'>Caminhão</label>
+                </div>
+                <div className='input'>
+                  <input
+                    type='radio'
+                    name='category'
+                    id='category'
+                    value='Implementos'
+                    onChange={changeCategory}
+                  />
+                  <label htmlFor='category'>Implementos</label>
+                </div>
               </li>
               <li>
                 <h3>Marca</h3>
@@ -229,14 +249,20 @@ const Catalog: NextPage = () => {
         </section>
         <section className='grid'>
           {results.map((product: Product) => (
-            <Link href={`/vendas/produtos/${product.id}`} key={product.id}>
-              <div className='item'>
-                <img
-                  src={product.attributes.images.data[0].attributes.url}
-                  alt={product.attributes.name}
-                />
-                <h2>{product.attributes.name}</h2>
-              </div>
+            <Link
+              href={`/vendas/produtos/${product.id}`}
+              key={product.id}
+              passHref
+            >
+              <a href=''>
+                <div className='item'>
+                  <img
+                    src={product.attributes.images.data[0].attributes.url}
+                    alt={product.attributes.name}
+                  />
+                  <h2>{product.attributes.name}</h2>
+                </div>
+              </a>
             </Link>
           ))}
         </section>

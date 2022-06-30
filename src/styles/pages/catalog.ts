@@ -135,7 +135,7 @@ export const Container = styled.main`
         overflow: hidden;
         transition: 0.3s;
         cursor: pointer;
-        max-height: 20rem;
+        height: 20rem;
 
         :hover {
           transform: scale(1.025);
