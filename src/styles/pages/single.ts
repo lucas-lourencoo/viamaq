@@ -129,6 +129,21 @@ export const Container = styled.main`
           line-height: 1.4;
           color: var(--black);
         }
+
+        a {
+          background: var(--blue);
+          color: var(--white);
+          font-size: 1.2rem;
+          margin: 1.6rem 0;
+          padding: 0.8rem 1.2rem;
+          border-radius: 5px;
+          transition: 0.3s;
+          display: inline-block;
+
+          :hover {
+            filter: brightness(90%);
+          }
+        }
       }
     }
 

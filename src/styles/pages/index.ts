@@ -159,6 +159,7 @@ export const Container = styled.div`
       justify-self: center;
       border-radius: 7px;
       position: relative;
+      margin-bottom: 1.6rem;
 
       figure {
         width: 100%;

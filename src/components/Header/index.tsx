@@ -35,6 +35,7 @@ export function Header() {
             <a
               href='https://api.whatsapp.com/send?phone=5567998319814&text=https://api.whatsapp.com/send?phone=5567998319814&text=Ol%C3%A1,%20gostaria%20de%20comprar%20uma%20m%C3%A1quina/pe%C3%A7a!'
               target='_blank'
+              title='Whatsapp Button'
             >
               <FaWhatsapp size={24} /> (67) 99831-9814
             </a>
@@ -43,12 +44,14 @@ export function Header() {
             <a
               href='https://www.facebook.com/viamaqtratoresepecas'
               target='__blank'
+              title='Facebook'
             >
               <FaFacebookSquare size={26} />
             </a>
             <a
               href='https://www.instagram.com/viamaqtratores/'
               target='__blank'
+              title='Instagram'
             >
               <FaInstagram size={26} />
             </a>
