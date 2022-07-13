@@ -55,7 +55,7 @@ export default class MyDocument extends Document {
             property='og:description'
             content='Empresa especializada na comercialização de máquinas pesadas, novas e usadas, peças e serviços.'
           />
-          <meta property='og:image' content='/logo.svg' />
+          <meta property='og:image' content='/logo.png' />
           <meta property='twitter:card' content='summary_large_image' />
           <meta
             property='twitter:url'
@@ -66,7 +66,7 @@ export default class MyDocument extends Document {
             property='twitter:description'
             content='Empresa especializada na comercialização de máquinas pesadas, novas e usadas, peças e serviços.'
           />
-          <meta property='twitter:image' content='/logo.svg'></meta>
+          <meta property='twitter:image' content='/logo.png'></meta>
           <link
             href='https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap'
             rel='stylesheet'

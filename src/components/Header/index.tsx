@@ -61,7 +61,7 @@ export function Header() {
       <div className='menu'>
         <Link href='/'>
           <a>
-            <img src='/logo.svg' alt='Logo Viamaq' />
+            <img src='/logo.png' alt='Logo Viamaq' />
           </a>
         </Link>
         <nav>
@@ -77,7 +77,7 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link href='/vendas/catalogo?category=Máquinas'>
+              <Link href='/vendas/catalogo?category=M%C3%A1quinas'>
                 <a>Venda de Máquinas</a>
               </Link>
             </li>

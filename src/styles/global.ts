@@ -7,22 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @font-face {
-    font-family: "DroidSans";
-    src: url("/fonts/DroidSans/DroidSans.ttf");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "DroidSans";
-    src: url("/fonts/DroidSans/DroidSans-Bold.ttf");
-    font-style: bold;
-    font-weight: 700;
-    font-display: swap;
-  }
-
   :root {
     --blue: #234BD7;
 

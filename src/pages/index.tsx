@@ -80,27 +80,27 @@ const Home = () => {
   const [machines, setMachines] = useState([] as Product[]);
   const [pieces, setPieces] = useState([] as Product[]);
 
+  async function getData() {
+    const response = await fetch(
+      'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
+    );
+
+    const { data } = await response.json();
+
+    const machines = await data.filter(
+      (product: Product) =>
+        product.attributes.category === 'Máquinas' && product
+    );
+
+    const pieces = await data.filter(
+      (product: Product) => product.attributes.category === 'Peças' && product
+    );
+
+    setMachines(machines);
+    setPieces(pieces);
+  }
+
   useEffect(() => {
-    async function getData() {
-      const response = await fetch(
-        'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
-      );
-
-      const { data } = await response.json();
-
-      const machines = await data.filter(
-        (product: Product) =>
-          product.attributes.category === 'Máquinas' && product
-      );
-
-      const pieces = await data.filter(
-        (product: Product) => product.attributes.category === 'Peças' && product
-      );
-
-      setMachines(machines);
-      setPieces(pieces);
-    }
-
     getData();
   }, []);
 
@@ -119,7 +119,7 @@ const Home = () => {
               Todos com <span>qualidade</span> e <span>procedência</span>!
             </h2>
 
-            <Link href='/vendas/catalogo?category=Máquinas'>
+            <Link href='/vendas/catalogo'>
               <a>
                 Conferir catálogo <FiArrowRight strokeWidth={3} size={30} />
               </a>

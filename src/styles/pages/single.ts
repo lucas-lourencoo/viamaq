@@ -85,7 +85,7 @@ export const Container = styled.main`
           display: flex;
           align-items: center;
           margin-bottom: 0.5rem;
-          font-family: 'DroidSans', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-weight: 700;
 
           svg {
@@ -172,7 +172,7 @@ export const Container = styled.main`
           text-align: center;
 
           h3 {
-            font-family: 'DroidSans', sans-serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             font-weight: 400;

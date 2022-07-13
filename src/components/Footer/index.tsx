@@ -13,7 +13,7 @@ export function Footer() {
       <section className='footerGrid'>
         <div className='content'>
           <div className='infos'>
-            <img src='/logo.svg' alt='Logo Viamaq' />
+            <img src='/logo.png' alt='Logo Viamaq' />
             <p>
               Máquinas, Tratores & Peças. Todos com qualidade e procedência!
             </p>
