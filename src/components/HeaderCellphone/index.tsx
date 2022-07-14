@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import ReactModal from 'react-modal';
 import { Container, NavItem } from './styles';
 import { FaBars } from 'react-icons/fa';
-import { FiPlus, FiSearch } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 
 export default function HeaderCellphone() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,11 +57,6 @@ export default function HeaderCellphone() {
     setIsModalOpen(true);
   }
 
-  function openSubMenu(event: any) {
-    if (event.target.children[1])
-      event.target.children[1].style.display = 'flex';
-  }
-
   return (
     <Container active={isActive} screenSize={screenSize}>
       <Link href='/'>
@@ -93,22 +87,14 @@ export default function HeaderCellphone() {
               </Link>
             </NavItem>
             <NavItem onClick={closeModal}>
-              <a>
-                Venda
-                <FiPlus size={14} strokeWidth={3} color='var(--principal)' />
-              </a>
-              <ul className='subMenu'>
-                <NavItem>
-                  <Link href='/vendas/catalogo'>
-                    <a>Máquinas</a>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href='/vendas/catalogo'>
-                    <a>Peças</a>
-                  </Link>
-                </NavItem>
-              </ul>
+              <Link href='/vendas/catalogo?category=M%C3%A1quinas'>
+                <a>Venda de Máquinas</a>
+              </Link>
+            </NavItem>
+            <NavItem onClick={closeModal}>
+              <Link href='/vendas/catalogo?category=Peças'>
+                <a>Venda de Peças</a>
+              </Link>
             </NavItem>
             <NavItem onClick={closeModal}>
               <Link href='/series'>

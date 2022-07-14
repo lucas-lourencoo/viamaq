@@ -82,14 +82,14 @@ const Home = () => {
 
   async function getData() {
     const response = await fetch(
-      'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
+      'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A&orderBy=createdAt'
     );
 
     const { data } = await response.json();
 
     const machines = await data.filter(
       (product: Product) =>
-        product.attributes.category === 'Máquinas' && product
+        product.attributes.category === ('Máquinas' || 'Caminhão') && product
     );
 
     const pieces = await data.filter(
@@ -131,7 +131,7 @@ const Home = () => {
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
             {machines.map((machine: Product, index: number) => {
-              if (index <= 3)
+              if (index <= 4)
                 return (
                   <div className='card' key={index}>
                     <figure>
