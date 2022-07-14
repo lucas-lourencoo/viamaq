@@ -40,7 +40,7 @@ export const Container = styled.footer`
       }
 
       h4 {
-        font-family: 'DroidSans', sans-serif;
+        font-family: 'Lato', sans-serif;
         font-size: 1.5rem;
         margin-bottom: 1.2rem;
       }

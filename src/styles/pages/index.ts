@@ -50,7 +50,7 @@ export const Container = styled.div`
         font-size: 4rem;
         line-height: 1.1;
         margin-bottom: 1.5rem;
-        font-family: 'DroidSans', sans-serif;
+        font-family: 'Lato', sans-serif;
         animation: appear 1s forwards;
 
         @media (max-width: 720px) {
@@ -71,7 +71,7 @@ export const Container = styled.div`
         font-weight: 400;
         font-size: 2.25rem;
         margin-top: 1.5rem;
-        font-family: 'DroidSans', sans-serif;
+        font-family: 'Lato', sans-serif;
         animation: appear 1.6s forwards;
 
         span {
@@ -159,6 +159,7 @@ export const Container = styled.div`
       justify-self: center;
       border-radius: 7px;
       position: relative;
+      margin-bottom: 1.6rem;
 
       figure {
         width: 100%;
@@ -177,7 +178,7 @@ export const Container = styled.div`
         text-align: center;
 
         h3 {
-          font-family: 'DroidSans', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-size: 1.5rem;
           margin-bottom: 1rem;
           font-weight: 400;
@@ -274,7 +275,7 @@ export const Container = styled.div`
         text-align: center;
 
         h3 {
-          font-family: 'DroidSans', sans-serif;
+          font-family: 'Lato', sans-serif;
           font-size: 1.5rem;
           margin-bottom: 1rem;
           font-weight: 400;

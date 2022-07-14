@@ -67,7 +67,7 @@ export default function HeaderCellphone() {
     <Container active={isActive} screenSize={screenSize}>
       <Link href='/'>
         <a>
-          <img src={'/logo.svg'} alt='Logo Viamaq' />
+          <img src={'/logo.png'} alt='Logo Viamaq' />
         </a>
       </Link>
 

@@ -1,114 +1,106 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import { GetServerSideProps } from 'next';
+import Slider from 'react-slick';
 import { Container } from '../styles/pages';
 import { Title } from '../styles/Title';
 import { Footer } from '../components/Footer';
-import Slider from 'react-slick';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaTag, FaTractor, FaCalendar, FaTachometerAlt } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useEffect, useState } from 'react';
 
-interface HomeProps {
-  machines: Product[];
-  pieces: Product[];
-}
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  pauseOnHover: false,
+  responsive: [
+    {
+      breakpoint: 720,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
+const settings2 = {
+  dots: false,
+  arrows: false,
+  infinite: true,
+  speed: 700,
+  slidesToShow: 6,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  pauseOnHover: false,
+  responsive: [
+    {
+      breakpoint: 720,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '20px',
+      },
+    },
+  ],
+};
+
+const settings3 = {
+  dots: true,
+  arrows: false,
+  infinite: true,
+  speed: 700,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  pauseOnHover: false,
+  responsive: [
+    {
+      breakpoint: 720,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '30px',
+      },
+    },
+  ],
+};
 
 const Home = () => {
   const [machines, setMachines] = useState([] as Product[]);
   const [pieces, setPieces] = useState([] as Product[]);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: false,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  async function getData() {
+    const response = await fetch(
+      'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
+    );
 
-  const settings2 = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: false,
-    responsive: [
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '20px',
-        },
-      },
-    ],
-  };
+    const { data } = await response.json();
 
-  const settings3 = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: false,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '30px',
-        },
-      },
-    ],
-  };
+    const machines = await data.filter(
+      (product: Product) =>
+        product.attributes.category === 'Máquinas' && product
+    );
+
+    const pieces = await data.filter(
+      (product: Product) => product.attributes.category === 'Peças' && product
+    );
+
+    setMachines(machines);
+    setPieces(pieces);
+  }
 
   useEffect(() => {
-    async function getData() {
-      const response = await fetch(
-        'https://strapi-viamaq.herokuapp.com/api/produtos?populate=%2A'
-      );
-
-      const { data } = await response.json();
-
-      const machines = await data.filter(
-        (product: Product) =>
-          product.attributes.category === 'Máquinas' && product
-      );
-
-      const pieces = await data.filter(
-        (product: Product) => product.attributes.category === 'Peças' && product
-      );
-
-      setMachines(machines);
-      setPieces(pieces);
-    }
-
     getData();
   }, []);
 
@@ -138,68 +130,105 @@ const Home = () => {
         <div className='destaques'>
           <Title>MÁQUINAS EM DESTAQUE</Title>
           <Slider {...settings}>
-            {machines.map((machine: Product, index: number) => (
-              <div className='card' key={index}>
-                <figure>
-                  <img
-                    src={machine.attributes.images.data[0].attributes.url}
-                    alt=''
-                  />
-                </figure>
+            {machines.map((machine: Product, index: number) => {
+              if (index <= 3)
+                return (
+                  <div className='card' key={index}>
+                    <figure>
+                      <img
+                        src={machine.attributes.images.data[0].attributes.url}
+                        alt=''
+                      />
+                    </figure>
 
-                <div className='infos'>
-                  <h3>{machine.attributes.name}</h3>
-                  <p>
-                    <FaTractor color='var(--principal-darkness-2)' />
-                    {machine.attributes.brand}
-                  </p>
-                  <p>
-                    <FaCalendar color='var(--principal-darkness-2)' /> Ano de
-                    Fabricação: {machine.attributes.year}
-                  </p>
-                  <p>
-                    <FaTachometerAlt color='var(--principal-darkness-2)' />
-                    Horimetro: {machine.attributes.hourmeter}
-                  </p>
-                  <Link href={`/vendas/produtos/${machine.id}`} passHref>
-                    <a href=''>Ver Mais</a>
-                  </Link>
-                </div>
-              </div>
-            ))}
+                    <div className='infos'>
+                      <h3>{machine.attributes.name}</h3>
+                      <p>
+                        <FaTractor color='var(--principal-darkness-2)' />
+                        {machine.attributes.brand}
+                      </p>
+                      <p>
+                        <FaCalendar color='var(--principal-darkness-2)' /> Ano
+                        de Fabricação: {machine.attributes.year}
+                      </p>
+                      <p>
+                        <FaTachometerAlt color='var(--principal-darkness-2)' />
+                        Horimetro: {machine.attributes.hourmeter}
+                      </p>
+                      <Link href={`/vendas/produtos/${machine.id}`} passHref>
+                        <a href=''>Ver Mais</a>
+                      </Link>
+                    </div>
+                  </div>
+                );
+            })}
+          </Slider>
+          <Slider {...settings}>
+            {machines.map((machine: Product, index: number) => {
+              if (index > 3)
+                return (
+                  <div className='card' key={index}>
+                    <figure>
+                      <img
+                        src={machine.attributes.images.data[0].attributes.url}
+                        alt=''
+                      />
+                    </figure>
+
+                    <div className='infos'>
+                      <h3>{machine.attributes.name}</h3>
+                      <p>
+                        <FaTractor color='var(--principal-darkness-2)' />
+                        {machine.attributes.brand}
+                      </p>
+                      <p>
+                        <FaCalendar color='var(--principal-darkness-2)' /> Ano
+                        de Fabricação: {machine.attributes.year}
+                      </p>
+                      <p>
+                        <FaTachometerAlt color='var(--principal-darkness-2)' />
+                        Horimetro: {machine.attributes.hourmeter}
+                      </p>
+                      <Link href={`/vendas/produtos/${machine.id}`} passHref>
+                        <a href=''>Ver Mais</a>
+                      </Link>
+                    </div>
+                  </div>
+                );
+            })}
           </Slider>
         </div>
 
         <div className='partnersLine'>
           <Slider {...settings2}>
-            <a href=''>
+            <a href='https://www.casece.com/latam/pt-br' target='__blank'>
               <img src='/logos/case.png' alt='Logo Case' />
             </a>
-            <a href=''>
+            <a href='https://www.komatsu.com.br/source/' target='__blank'>
               <img src='/logos/komatisu.png' alt='Logo Komatisu' />
             </a>
-            <a href=''>
+            <a href='https://www.deere.com.br/pt/index.html' target='__blank'>
               <img src='/logos/john-deere.png' alt='Logo John Deere' />
             </a>
-            <a href=''>
+            <a href='https://www.jcb.com/pt-br' target='__blank'>
               <img src='/logos/jcb.png' alt='Logo JCB' />
             </a>
-            <a href=''>
+            <a href='https://www.caterpillar.com/pt.html' target='__blank'>
               <img src='/logos/cat.png' alt='Logo Caterpillar' />
             </a>
-            <a href=''>
+            <a href='https://clarkempilhadeiras.com.br/' target='__blank'>
               <img src='/logos/clark.png' alt='Logo Clark' />
             </a>
-            <a href=''>
+            <a href='https://www.hyster.com/pt-br/brazil/' target='__blank'>
               <img src='/logos/hyster.png' alt='Logo Hyster' />
             </a>
-            <a href=''>
+            <a href='https://www.volvoce.com/brasil/pt-br/' target='__blank'>
               <img src='/logos/volvo.png' alt='Logo Volvo' />
             </a>
-            <a href=''>
+            <a href='' target='__blank'>
               <img src='/logos/michigan.png' alt='Logo Michigan' />
             </a>
-            <a href=''>
+            <a href='' target='__blank'>
               <img src='/logos/fiatallis.png' alt='Logo fiatallis' />
             </a>
           </Slider>
@@ -237,6 +266,7 @@ const Home = () => {
           allowFullScreen
           loading='lazy'
           referrerPolicy='no-referrer-when-downgrade'
+          title='Locale Map'
         ></iframe>
       </main>
 
